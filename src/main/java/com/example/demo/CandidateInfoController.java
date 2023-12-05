@@ -73,7 +73,7 @@ public class CandidateInfoController {
                 connector.setTextFill(Color.rgb(119,119,119));
 
                 HBox jobComponent = new HBox(jobTitle, connector, chip);
-                jobComponent.setAlignment(Pos.CENTER);
+                jobComponent.setAlignment(Pos.CENTER_LEFT);
 
                 candidateJobs.getChildren().add(jobComponent);
             } catch (IOException e) {

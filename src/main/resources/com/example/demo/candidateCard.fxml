@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<HBox fx:id="candidateContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateCardController">
+<HBox fx:id="candidateContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateCardController">
    <children>
       <HBox alignment="CENTER_LEFT" spacing="8.0" HBox.hgrow="SOMETIMES">
          <children>
@@ -21,12 +20,12 @@
                   </Label>
                   <HBox>
                      <children>
-                        <Label fx:id="candidateJob" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Software Engineer" textFill="#777777">
+                        <Label fx:id="candidateJob" style="-fx-font-family: Roboto Flex;" text="Software Engineer" textFill="#777777">
                            <font>
                               <Font name="Roboto Flex Regular" size="10.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text=" at " textFill="#777777">
+                        <Label layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text=" at " textFill="#777777">
                            <font>
                               <Font name="Roboto Flex Regular" size="10.0" />
                            </font>

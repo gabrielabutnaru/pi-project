@@ -14,6 +14,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -53,10 +54,10 @@ public class ActiveCardController {
         cardTitle.setText(role.getTitle());
         cardCity.setText(role.getCity());
 
-        LocalDateTime currentDate = LocalDateTime.now();
-        LocalDateTime postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        long diffInMillies = ChronoUnit.DAYS.between(postDate, currentDate);
-        cardDate.setText(String.valueOf(TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)));
+        LocalDate currentDate = LocalDate.now();
+        LocalDate postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
+        cardDate.setText(Long.toString(diffInDays));
 
         cardOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
         cardSalaryBudget.setText(role.getSalaryBudget());

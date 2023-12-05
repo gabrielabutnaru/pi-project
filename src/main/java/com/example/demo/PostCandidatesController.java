@@ -18,6 +18,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -56,10 +57,10 @@ public class PostCandidatesController {
         cardCandidates.setText(Integer.toString(role.getStatus().getCandidates()));
         cardConfirmed.setText(Integer.toString(role.getStatus().getConfirmed()));
 
-        LocalDateTime currentDate = LocalDateTime.now();
-        LocalDateTime postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        long diffInMillies = ChronoUnit.DAYS.between(postDate, currentDate);
-        cardDays.setText(String.valueOf(TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)));
+        LocalDate currentDate = LocalDate.now();
+        LocalDate postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
+        cardDays.setText(Long.toString(diffInDays));
 
         cardOmitted.setText(Integer.toString(role.getStatus().getOmitted()));
         role.getSkills().forEach(s -> {
