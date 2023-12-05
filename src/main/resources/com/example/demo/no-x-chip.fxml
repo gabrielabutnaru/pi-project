@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: D8E0FF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.NoXChipController">
+   <children>
+      <Label fx:id="noXChipLabel" alignment="CENTER" style="-fx-font-family: Roboto Flex;" text="JavaScript" textFill="#223ca4" />
+   </children>
+   <padding>
+      <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+   </padding>
+</HBox>

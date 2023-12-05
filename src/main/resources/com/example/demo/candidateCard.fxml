@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="candidateContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateCardController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="8.0" HBox.hgrow="SOMETIMES">
+         <children>
+            <Circle fx:id="candidateAvatar" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <VBox alignment="CENTER_LEFT" prefWidth="202.0">
+               <children>
+                  <Label fx:id="candidateName" graphicTextGap="0.0" layoutX="10.0" layoutY="39.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Maria Piersica">
+                     <font>
+                        <Font name="Roboto Flex Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox>
+                     <children>
+                        <Label fx:id="candidateJob" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Software Engineer" textFill="#777777">
+                           <font>
+                              <Font name="Roboto Flex Regular" size="10.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text=" at " textFill="#777777">
+                           <font>
+                              <Font name="Roboto Flex Regular" size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="candidateCompany" layoutX="119.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Amazon" textFill="#777777">
+                           <font>
+                              <Font name="Roboto Flex Regular" size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" spacing="4.0" HBox.hgrow="NEVER">
+         <children>
+            <HBox fx:id="viewCandidateButton" alignment="CENTER" maxWidth="-Infinity" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
+               <children>
+                  <Label style="-fx-font-family: Roboto Flex;" text="View candidate" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Flex Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="8.0" top="8.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets left="8.0" right="8.0" />
+   </padding>
+</HBox>

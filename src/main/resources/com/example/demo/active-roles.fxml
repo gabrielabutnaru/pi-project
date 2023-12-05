@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ActiveRolesController">
+   <padding>
+      <Insets bottom="24.0" left="32.0" right="28.0" top="24.0" />
+   </padding>
+   <children>
+      <ScrollPane hbarPolicy="NEVER" pannable="true" stylesheets="@../../../style.css" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="activeCardLayout" />
+         </content>
+         <styleClass>
+            <String fx:value="scroll-pane" />
+            <String fx:value="decrement-arrow" />
+            <String fx:value="decrement-button" />
+            <String fx:value="increment-arrow" />
+            <String fx:value="increment-button" />
+            <String fx:value="scroll-bar" />
+         </styleClass>
+      </ScrollPane>
+   </children>
+</VBox>
