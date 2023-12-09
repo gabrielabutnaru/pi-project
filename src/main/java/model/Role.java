@@ -1,4 +1,4 @@
-package com.example.demo;
+package model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,7 +81,7 @@ public class Role {
         return skills;
     }
 
-    public Boolean getActive() {
+    public Boolean isActive() {
         return isActive;
     }
 

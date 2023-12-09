@@ -14,6 +14,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Candidate;
+import model.EStatus;
 
 import java.io.IOException;
 import java.text.ParseException;

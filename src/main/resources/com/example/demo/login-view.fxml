@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SwitchScenes">
+<VBox style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
    <children>
       <VBox prefHeight="519.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;">
          <children>
@@ -54,7 +54,7 @@
                                  </VBox>
                               </children>
                            </VBox>
-                            <Button fx:id="logInButton" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-font-size: 14; -fx-border-color: #FFFFFF; -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-width: 2; -fx-background-color: transparent;" text="Connect" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                            <Button fx:id="logInButton" onAction="#onLogInButtonClick" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-font-size: 14; -fx-border-color: #FFFFFF; -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-width: 2; -fx-background-color: transparent;" text="Connect" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                               <font>
                                  <Font name="Roboto Light" size="14.0" />
                               </font>

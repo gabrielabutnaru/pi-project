@@ -7,7 +7,7 @@ public class NoXChipController {
     @FXML
     private Label noXChipLabel;
 
-    public void setData(Chip chip) {
-        this.noXChipLabel.setText(chip.getLabel());
+    public void setData(String chip) {
+        this.noXChipLabel.setText(chip);
     }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" spacing="32.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.PostCandidatesController">
+<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" spacing="32.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RoleDetailsController">
    <children>
       <VBox alignment="TOP_CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="207.0" style="-fx-background-color: linear-gradient(to top, #0D1C58 -10.05%,  #2541B2 108.91%); -fx-background-radius: 18; -fx-border-radius: 18;">
          <HBox.margin>
@@ -27,7 +27,7 @@
                <children>
                   <HBox alignment="TOP_CENTER" minHeight="-Infinity" VBox.vgrow="NEVER">
                      <children>
-                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;" />
+                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;" />
                         <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                            <children>
                               <Label fx:id="cardDays" style="-fx-font-family: Roboto Flex;" text="3" textFill="#777777">

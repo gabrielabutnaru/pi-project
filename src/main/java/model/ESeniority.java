@@ -1,4 +1,4 @@
-package com.example.demo;
+package model;
 
 public enum ESeniority {
     ENTRY,

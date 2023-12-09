@@ -17,6 +17,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.Candidate;
+import model.EStatus;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -63,7 +65,7 @@ public class CandidateInfoController {
             try {
                 HBox chip = fxmlLoader.load();
                 NoXChipController chipController = fxmlLoader.getController();
-                chipController.setData(new Chip(job.getCompany()));
+                chipController.setData(job.getCompany());
 
                 Label jobTitle = new Label(job.getTitle());
                 Label connector = new Label(" at ");
@@ -87,7 +89,7 @@ public class CandidateInfoController {
             try {
                 HBox chip = fxmlLoader.load();
                 NoXChipController chipController = fxmlLoader.getController();
-                chipController.setData(new Chip(skill));
+                chipController.setData(skill);
                 candidateSkills.getChildren().add(chip);
             } catch (IOException e) {
                 throw new RuntimeException(e);

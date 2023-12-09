@@ -1,28 +1,19 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import model.Candidate;
+import model.EStatus;
+import model.Role;
+import model.Screen;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 public class ActiveCardController {
-    @FXML
-    private VBox cardButton;
     @FXML
     private Label cardCity;
     @FXML
@@ -48,54 +39,40 @@ public class ActiveCardController {
     @FXML
     private HBox barOmitted;
     private Role role;
-    private Stage stage;
 
-    public void setData(Role role) throws ParseException {
+    public void setData(Role role) {
+        this.role = role;
+
+        cardOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
         cardTitle.setText(role.getTitle());
+
         cardCity.setText(role.getCity());
+        cardSkills.setText(String.join(", ", role.getSkills()));
+        cardSalaryBudget.setText(role.getSalaryBudget());
+
+        int omittedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.OMITTED || c.getStatus() == EStatus.FAILED).count();
+        int confirmedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.IN_TOUCH || c.getStatus() == EStatus.EMPLOYED).count();
+        int allCandidatesCount = role.getCandidates().size();
+
+        cardOmitted.setText(Integer.toString(omittedCandidatesCount));
+        cardConfirmed.setText(Integer.toString(confirmedCandidatesCount));
+        cardCandidates.setText(Integer.toString(allCandidatesCount));
+
+        int confirmedPercent = confirmedCandidatesCount * 100 / allCandidatesCount;
+        int omittedPercent = omittedCandidatesCount * 100 / allCandidatesCount;
+
+        barConfirmed.setPrefWidth(confirmedPercent * barCandidates.getPrefWidth() / 100);
+        barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);
 
         LocalDate currentDate = LocalDate.now();
         LocalDate postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
         cardDate.setText(Long.toString(diffInDays));
-
-        cardOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
-        cardSalaryBudget.setText(role.getSalaryBudget());
-        cardSkills.setText(String.join(", ", role.getSkills()));
-        cardOmitted.setText(Integer.toString(role.getStatus().getOmitted()));
-        cardConfirmed.setText(Integer.toString(role.getStatus().getConfirmed()));
-        cardCandidates.setText(Integer.toString(role.getStatus().getCandidates()));
-        int confirmedPercent = role.getStatus().getConfirmed() * 100 / role.getStatus().getCandidates();
-        int omittedPercent = role.getStatus().getOmitted() * 100 / role.getStatus().getCandidates();
-        barConfirmed.setPrefWidth(confirmedPercent * barCandidates.getPrefWidth() / 100);
-        barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);
-        this.role = role;
-        openPost(this.role);
     }
 
-    public void openPost(Role role) {
-        cardButton.setOnMouseClicked(mouseEvent -> {
-           FXMLLoader fxmlLoader = new FXMLLoader();
-           fxmlLoader.setLocation(getClass().getResource("post-candidates.fxml"));
-            BorderPane borderPane = new BorderPane();
-            ToolBar toolBar = new ToolBar();
-            SwitchScenes.configToolbar(toolBar, 56);
-            try {
-                SwitchScenes.configBorderPane(borderPane, fxmlLoader, toolBar);
-                stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
-
-                Main.makeDraggable(borderPane, stage);
-
-                PostCandidatesController postCandidatesController = fxmlLoader.getController();
-                postCandidatesController.setData(role);
-
-                Scene postCandidatesScene = new Scene(borderPane, 1024, 575);
-                postCandidatesScene.setFill(Color.TRANSPARENT);
-
-                stage.setScene(postCandidatesScene);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    @FXML
+    public void onCardButtonClick() {
+        Scenery.getInstance().getRoleDetailsController().drawData(role);
+        Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 }

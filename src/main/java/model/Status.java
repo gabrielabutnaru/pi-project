@@ -1,4 +1,4 @@
-package com.example.demo;
+package model;
 
 public class Status {
     private int omitted;

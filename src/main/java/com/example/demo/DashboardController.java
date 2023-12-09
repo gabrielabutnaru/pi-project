@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,14 +10,19 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import model.Screen;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+enum Section {
+    ACTIVE_ROLES,
+    ARCHIVED_ROLES,
+    NEW_ROLE
+}
 
-
-public class DashboardController implements Initializable  {
+public class DashboardController implements Initializable {
     @FXML
     private Circle myCircle;
 
@@ -35,85 +39,59 @@ public class DashboardController implements Initializable  {
     private HBox newRoleButton;
 
     @FXML
-    public void showContentActivePage() {
-        FXMLLoader boxLoader = new FXMLLoader(Main.class.getResource("active-roles.fxml"));
-        try {
-            VBox activePage = boxLoader.load();
-            VBox.setVgrow(activePage, Priority.ALWAYS);
-
-            if (!mainBox.getChildren().isEmpty()) {
-                mainBox.getChildren().remove(0);
-            }
-            mainBox.getChildren().addAll(activePage);
-            activeRolesButton.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            activeRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 700");
-
-            archivedRolesButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            archivedRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-
-            newRoleButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            newRoleButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void onActiveRolesButtonClick() {
+        loadSection(Section.ACTIVE_ROLES);
     }
 
     @FXML
-    public void showContentArchivedPage() {
-        FXMLLoader boxLoader = new FXMLLoader(Main.class.getResource("archived-roles.fxml"));
-        try {
-            VBox activePage = boxLoader.load();
-            VBox.setVgrow(activePage, Priority.ALWAYS);
-
-            if (!mainBox.getChildren().isEmpty()) {
-                mainBox.getChildren().remove(0);
-            }
-            mainBox.getChildren().addAll(activePage);
-
-            activeRolesButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            activeRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-
-            archivedRolesButton.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            archivedRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 700");
-
-            newRoleButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            newRoleButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void onArchivedRolesButtonClick() {
+        loadSection(Section.ARCHIVED_ROLES);
     }
 
     @FXML
-    public void showContentNewRolePage() {
-        FXMLLoader boxLoader = new FXMLLoader(Main.class.getResource("new-role.fxml"));
+    public void onNewRoleButtonClick() {
+        loadSection(Section.NEW_ROLE);
+    }
+
+    @FXML
+    private void onLogOutButtonClick() {
+        Scenery.getInstance().changeScene(Screen.LOGIN);
+    }
+
+    private void loadSection(Section section) {
+        String resource = "new-role.fxml";
+        if (section == Section.ACTIVE_ROLES) {
+            resource = "active-roles.fxml";
+        } else if (section == Section.ARCHIVED_ROLES) {
+            resource = "archived-roles.fxml";
+        }
+
+        FXMLLoader boxLoader = new FXMLLoader(getClass().getResource(resource));
+        VBox activePage;
         try {
-            VBox activePage = boxLoader.load();
-            VBox.setVgrow(activePage, Priority.ALWAYS);
-
-            if (!mainBox.getChildren().isEmpty()) {
-                mainBox.getChildren().remove(0);
-            }
-            mainBox.getChildren().removeAll();
-
-            mainBox.getChildren().addAll(activePage);
-            activeRolesButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            activeRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-
-            archivedRolesButton.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            archivedRolesButton.getChildren().get(1).setStyle("-fx-font-weight: 400");
-
-            newRoleButton.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            newRoleButton.getChildren().get(1).setStyle("-fx-font-weight: 700");
+            activePage = boxLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+        VBox.setVgrow(activePage, Priority.ALWAYS);
 
+        mainBox.getChildren().clear();
+        mainBox.getChildren().addAll(activePage);
+
+        activeRolesButton.setNodeOrientation(section == Section.ACTIVE_ROLES ? NodeOrientation.RIGHT_TO_LEFT : NodeOrientation.LEFT_TO_RIGHT);
+        activeRolesButton.getChildren().get(1).setStyle("-fx-font-weight: " + (section == Section.ACTIVE_ROLES ? "700" : "400"));
+
+        archivedRolesButton.setNodeOrientation(section == Section.ARCHIVED_ROLES ? NodeOrientation.RIGHT_TO_LEFT : NodeOrientation.LEFT_TO_RIGHT);
+        archivedRolesButton.getChildren().get(1).setStyle("-fx-font-weight: " + (section == Section.ARCHIVED_ROLES ? "700" : "400"));
+
+        newRoleButton.setNodeOrientation(section == Section.NEW_ROLE ? NodeOrientation.RIGHT_TO_LEFT : NodeOrientation.LEFT_TO_RIGHT);
+        newRoleButton.getChildren().get(1).setStyle("-fx-font-weight: " + (section == Section.NEW_ROLE ? "700" : "400"));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image im = new Image("Avatar.png", false);
         myCircle.setFill(new ImagePattern(im));
-        showContentActivePage();
+        onActiveRolesButtonClick();
     }
 }

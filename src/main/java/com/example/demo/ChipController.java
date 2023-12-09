@@ -15,8 +15,8 @@ public class ChipController {
     private HBox xButton;
     private EventHandler<MouseEvent> onRemove;
 
-    public void setData(Chip chip, EventHandler<MouseEvent> onRemove) {
-        chipLabel.setText(chip.getLabel());
+    public void setData(String s, EventHandler<MouseEvent> onRemove) {
+        chipLabel.setText(s);
         xButton.setOnMouseClicked(onRemove);
     }
 }

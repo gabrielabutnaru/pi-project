@@ -1,4 +1,6 @@
-package com.example.demo;
+package model;
+
+import model.ESeniority;
 
 import java.util.Date;
 

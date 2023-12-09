@@ -55,7 +55,7 @@ public class NewRoleController implements Initializable {
                     HBox cardBox = fxmlLoader.load();
                     ChipController chipController = fxmlLoader.getController();
                     int finalI = i;
-                    chipController.setData(new Chip(skills.get(i)), new EventHandler<MouseEvent>() {
+                    chipController.setData(skills.get(i), new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
                             skills.remove(finalI);
