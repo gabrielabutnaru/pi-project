@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,9 +24,9 @@ public class Data {
         role1.setStatus(new Status(5, 10, 20));
 
         Candidate candidate1 = new Candidate(1, "Maria", "Piersica", 25, "Brasov, Romania","https://i.imgur.com/w7X0qJu.png");
-        Job job1 = new Job(1, "Intern", new Date(2020, Calendar.MARCH, 12), new Date(2021, Calendar.FEBRUARY, 10), ESeniority.ENTRY, "Nokia");
-        Job job2 = new Job(2, "Junior Developer", new Date(2021, Calendar. JUNE, 2), new Date(2022, Calendar.DECEMBER, 12), ESeniority.JUNIOR, "Intel");
-        Job job3 = new Job(3, "Middle Developer", new Date(2022, Calendar.DECEMBER, 19), new Date(2023, Calendar.DECEMBER, 5), ESeniority.MIDDLE, "IBM");
+        Job job1 = new Job(1, "Intern", LocalDate.of(2020, 3, 12), LocalDate.of(2021, 2, 10), ESeniority.ENTRY, "Nokia");
+        Job job2 = new Job(2, "Junior Developer", LocalDate.of(2021, 5, 2), LocalDate.of(2022, 12, 12), ESeniority.JUNIOR, "Intel");
+        Job job3 = new Job(3, "Middle Developer", LocalDate.of(2022, 12, 19), LocalDate.of(2023, 12, 5), ESeniority.MIDDLE, "IBM");
         candidate1.getJobs().add(job3);
         candidate1.getJobs().add(job2);
         candidate1.getJobs().add(job1);
@@ -38,9 +39,9 @@ public class Data {
         candidate1.getSkills().add("MySQL");
 
         Candidate candidate2 = new Candidate(2, "Mihai", "Pop", 30, "Timisoara, Romania","https://i.imgur.com/jULTfan.png");
-        Job job4 = new Job(4, "Intern", new Date(2016, Calendar.JUNE, 10), new Date(2017, Calendar.APRIL, 10), ESeniority.ENTRY, "Continental");
-        Job job5 = new Job(5, "Junior Developer", new Date(2017, Calendar. JUNE, 2), new Date(2022, Calendar.DECEMBER, 12), ESeniority.JUNIOR, "Intel");
-        Job job6 = new Job(6, "Middle Developer", new Date(2022, Calendar.DECEMBER, 19), new Date(2023, Calendar.DECEMBER, 5), ESeniority.MIDDLE, "Nokia");
+        Job job4 = new Job(4, "Intern", LocalDate.of(2016,5, 10), LocalDate.of(2017, 4, 10), ESeniority.ENTRY, "Continental");
+        Job job5 = new Job(5, "Junior Developer", LocalDate.of(2017, 5, 2), LocalDate.of(2022, 12, 12), ESeniority.JUNIOR, "Intel");
+        Job job6 = new Job(6, "Middle Developer", LocalDate.of(2022, 12, 19), LocalDate.of(2023, 12, 5), ESeniority.MIDDLE, "Nokia");
         candidate2.getJobs().add(job6);
         candidate2.getJobs().add(job5);
         candidate2.getJobs().add(job4);
@@ -56,7 +57,7 @@ public class Data {
         role1.getCandidates().add(candidate2);
         role1.setOwner(user);
         role1.setActive(true);
-        role1.setDate(new Date(123, Calendar.DECEMBER, 4));
+        role1.setDate(LocalDate.of(2023, 12, 4));
 
         Role role2 = new Role();
         role2.setId(3);
@@ -69,11 +70,11 @@ public class Data {
 
         role2.setOwner(user);
         role2.setActive(true);
-        role2.setDate(new Date(123, Calendar.DECEMBER, 2));
+        role2.setDate(LocalDate.of(2023, 12, 2));
         role2.getCandidates().add(candidate1);
 
         Candidate candidate6 = new Candidate(3, "Andrei", "Neacsu", 28, "Timisoara, Romania","https://imgur.com/YDEKMnk.png");
-        Job job7 = new Job(7, "Junior", new Date(2018, Calendar.DECEMBER, 10), new Date(2020, Calendar.APRIL, 10), ESeniority.JUNIOR, "Continental");
+        Job job7 = new Job(7, "Junior", LocalDate.of(2018, 12, 10), LocalDate.of(2020, 4, 10), ESeniority.JUNIOR, "Continental");
         candidate6.getJobs().add(job7);
         candidate6.getJobs().add(job4);
 
@@ -97,11 +98,11 @@ public class Data {
 
         role3.setOwner(user);
         role3.setActive(false);
-        role3.setDate(new Date(123, Calendar.DECEMBER, 2));
+        role3.setDate(LocalDate.of(2023, 12, 2));
         role3.getCandidates().add(candidate1);
 
         Candidate candidate3 = new Candidate(3, "Andrei", "Neacsu", 28, "Timisoara, Romania","https://imgur.com/YDEKMnk.png");
-        Job job10 = new Job(7, "Junior", new Date(2018, Calendar.DECEMBER, 10), new Date(2020, Calendar.APRIL, 10), ESeniority.JUNIOR, "Continental");
+        Job job10 = new Job(7, "Junior", LocalDate.of(2018, 12, 10), LocalDate.of(2020, 4, 10), ESeniority.JUNIOR, "Continental");
         candidate3.getJobs().add(job10);
         candidate3.getJobs().add(job4);
 
@@ -132,7 +133,7 @@ public class Data {
         candidate4.getSkills().add("Blender");
         candidate4.getSkills().add("Photoshop");
         candidate4.getSkills().add("Canva");
-        Job job9 = new Job(9, "UI / UX Designer", new Date(2022,Calendar.DECEMBER, 12), new Date(2023, Calendar.JUNE,23),ESeniority.JUNIOR, "Cobalt Sign");
+        Job job9 = new Job(9, "UI / UX Designer", LocalDate.of(2022, 12, 12), LocalDate.of(2023, 5,23),ESeniority.JUNIOR, "Cobalt Sign");
         candidate4.getJobs().add(job9);
         role4.getCandidates().add(candidate4);
 
@@ -141,10 +142,10 @@ public class Data {
         candidate5.getSkills().add("Blender");
         candidate5.getSkills().add("Photoshop");
         candidate5.getSkills().add("Figma");
-        Job job8 = new Job(8, "UI / UX Designer", new Date(2021,Calendar.DECEMBER, 12), new Date(2023, Calendar.NOVEMBER,23),ESeniority.JUNIOR, "Cobalt Sign");
+        Job job8 = new Job(8, "UI / UX Designer", LocalDate.of(2021, 12, 12), LocalDate.of(2023, 11,23),ESeniority.JUNIOR, "Cobalt Sign");
         candidate5.getJobs().add(job8);
         role4.getCandidates().add(candidate5);
-        role4.setDate(new Date(123, Calendar.NOVEMBER, 23));
+        role4.setDate(LocalDate.of(2023, 11, 23));
         role4.setStatus(new Status(10, 18, 20));
 
         roles.add(role1);

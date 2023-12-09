@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,7 @@ public class Role {
     private int id;
     private String title;
     private String city;
-    private Date date;
+    private LocalDate date;
     private String salaryBudget;
     private List<String> skills;
     private Boolean isActive;
@@ -23,7 +24,7 @@ public class Role {
         this.sharedWith = new ArrayList<>();
     }
 
-    public Role(int id, String title, String city, Date date, String salaryBudget, Boolean isActive, User owner, Status status) {
+    public Role(int id, String title, String city, LocalDate date, String salaryBudget, Boolean isActive, User owner, Status status) {
         this.id = id;
         this.title = title;
         this.city = city;
@@ -61,11 +62,11 @@ public class Role {
         this.city = city;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

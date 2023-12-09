@@ -48,7 +48,7 @@ public class RoleDetailsController {
 
     public void drawData(Role role) {
         LocalDate currentDate = LocalDate.now();
-        LocalDate postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate postDate = role.getDate();
         long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
         cardDays.setText(Long.toString(diffInDays));
 

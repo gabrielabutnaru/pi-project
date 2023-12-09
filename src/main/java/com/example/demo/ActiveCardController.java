@@ -65,7 +65,7 @@ public class ActiveCardController {
         barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);
 
         LocalDate currentDate = LocalDate.now();
-        LocalDate postDate = role.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate postDate = role.getDate();
         long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
         cardDate.setText(Long.toString(diffInDays));
     }
