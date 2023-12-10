@@ -7,7 +7,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 public class ChipController {
-
     @FXML
     private Label chipLabel;
 

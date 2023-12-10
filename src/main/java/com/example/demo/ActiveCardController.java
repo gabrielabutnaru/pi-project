@@ -8,6 +8,7 @@ import model.EStatus;
 import model.Role;
 import model.Screen;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -71,7 +72,7 @@ public class ActiveCardController {
     }
 
     @FXML
-    public void onCardButtonClick() {
+    public void onCardButtonClick() throws IOException {
         Scenery.getInstance().getRoleDetailsController().drawData(role);
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }

@@ -42,7 +42,7 @@ public class RoleDetailsController {
     @FXML
     private FlowPane skillsScroll;
     @FXML
-    private void onBackButtonClick() {
+    private void onBackButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.DASHBOARD);
     }
 

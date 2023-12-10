@@ -54,7 +54,7 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    private void onLogOutButtonClick() {
+    private void onLogOutButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 

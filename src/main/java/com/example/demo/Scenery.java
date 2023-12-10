@@ -30,7 +30,7 @@ public class Scenery {
     private final Scene roleDetails;
     private final RoleDetailsController roleDetailsController;
 
-    private Scenery() {
+    private Scenery() throws IOException {
         this.stage = new Stage();
 
         Pair<Scene, FXMLLoader> loginPair = createScene("login-view.fxml");
@@ -51,7 +51,7 @@ public class Scenery {
         stage.setScene(this.login);
     }
 
-    private Pair<Scene, FXMLLoader> createScene(String resourceUrl) {
+    private Pair<Scene, FXMLLoader> createScene(String resourceUrl) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resourceUrl));
         ToolBar toolBar = createToolbar();
         BorderPane borderPane = createBorderPane(fxmlLoader, toolBar);
@@ -68,16 +68,9 @@ public class Scenery {
         return new Pair<>(scene, fxmlLoader);
     }
 
-    private ToolBar createToolbar() {
-        ToolBar toolBar = new ToolBar();
-        final int height = 56;
-        toolBar.setPrefHeight(height);
-        toolBar.setMinHeight(height);
-        toolBar.setMaxHeight(height);
-        toolBar.getItems().add(new WindowButtons());
-        toolBar.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-        toolBar.setStyle("-fx-background-color: #B4C0F0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 16");
-        return toolBar;
+    private ToolBar createToolbar() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toolbar.fxml"));
+        return fxmlLoader.load();
     }
 
     private BorderPane createBorderPane(FXMLLoader fxmlLoader, ToolBar toolBar) {
@@ -93,7 +86,7 @@ public class Scenery {
         return borderPane;
     }
 
-    public static Scenery getInstance() {
+    public static Scenery getInstance() throws IOException {
         if (instance == null) instance = new Scenery();
         return instance;
     }
