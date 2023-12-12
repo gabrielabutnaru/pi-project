@@ -43,7 +43,7 @@
       </HBox>
       <VBox alignment="CENTER" spacing="4.0" HBox.hgrow="NEVER">
          <children>
-            <HBox fx:id="viewCandidateButton" alignment="CENTER" maxWidth="-Infinity" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
+            <HBox fx:id="viewCandidateButton" alignment="CENTER" maxWidth="-Infinity" onMouseClicked="#onViewCandidateButton" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
                <children>
                   <Label style="-fx-font-family: Roboto Flex;" text="View candidate" textFill="WHITE">
                      <font>

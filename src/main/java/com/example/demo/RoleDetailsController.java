@@ -41,12 +41,25 @@ public class RoleDetailsController {
     private Label cardTitle;
     @FXML
     private FlowPane skillsScroll;
+
+    private Role role;
     @FXML
     private void onBackButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.DASHBOARD);
     }
 
+    /*
+    Nu se loaduie cand trebuie!
+     */
+    @FXML
+    private void onArchiveButtonClick() throws IOException {
+        role.setActive(false);
+        Scenery.getInstance().changeScene(Screen.DASHBOARD);
+    }
+
     public void drawData(Role role) {
+        this.role = role;
+
         LocalDate currentDate = LocalDate.now();
         LocalDate postDate = role.getDate();
         long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);

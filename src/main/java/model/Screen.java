@@ -3,5 +3,6 @@ package model;
 public enum Screen {
     LOGIN,
     DASHBOARD,
-    ROLE_DETAILS
+    ROLE_DETAILS,
+    CANDIDATE_DETAILS
 }

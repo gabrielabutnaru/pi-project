@@ -30,6 +30,9 @@ public class Scenery {
     private final Scene roleDetails;
     private final RoleDetailsController roleDetailsController;
 
+    private final Scene candidateDetails;
+    private final CandidateDetailsController candidateDetailsController;
+
     private Scenery() throws IOException {
         this.stage = new Stage();
 
@@ -44,6 +47,10 @@ public class Scenery {
         Pair<Scene, FXMLLoader> roleDetailsPair = createScene("role-details.fxml");
         this.roleDetails = roleDetailsPair.getKey();
         this.roleDetailsController = roleDetailsPair.getValue().getController();
+
+        Pair<Scene, FXMLLoader> candidateDetailsPair = createScene("candidate-details.fxml");
+        this.candidateDetails = candidateDetailsPair.getKey();
+        this.candidateDetailsController = candidateDetailsPair.getValue().getController();
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -102,10 +109,16 @@ public class Scenery {
             this.stage.setScene(this.dashboard);
         } else if (screen == Screen.ROLE_DETAILS) {
             this.stage.setScene(this.roleDetails);
+        } else if (screen == Screen.CANDIDATE_DETAILS) {
+            this.stage.setScene(this.candidateDetails);
         }
     }
 
     public RoleDetailsController getRoleDetailsController() {
         return this.roleDetailsController;
     }
+    public CandidateDetailsController getCandidateDetailsController() {
+        return this.candidateDetailsController;
+    }
+
 }

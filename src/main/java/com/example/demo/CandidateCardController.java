@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Candidate;
 import model.EStatus;
+import model.Role;
+import model.Screen;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -36,13 +38,15 @@ public class CandidateCardController {
     @FXML
     private Label candidateName;
 
-    @FXML
-    private HBox viewCandidateButton;
+    private Candidate candidate;
 
-    private double xOffset;
-    private double yOffset;
 
+    /*
+    Nu se loaduie cand trebuie! Also daca modific statusul unui candidat pe un anumit rol, atunci se modifica peste tot.
+     */
     public void setData(Candidate candidate) throws ParseException {
+        this.candidate = candidate;
+
         candidateName.setText(candidate.getFirstName() + " " + candidate.getLastName());
         candidateJob.setText(candidate.getJobs().get(0).getTitle());
         candidateCompany.setText(candidate.getJobs().get(0).getCompany());
@@ -58,48 +62,12 @@ public class CandidateCardController {
             candidateContainer.setStyle("-fx-background-color: #DBFBE2");
         }
         candidateAvatar.setFill(new ImagePattern(new Image(candidate.getAvatar(), false)));
-        openCandidate(candidate);
     }
 
-    public void openCandidate(Candidate candidate) {
-        viewCandidateButton.setOnMouseClicked(mouseEvent -> {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("candidateInfo.fxml"));
-            Stage candidateStage = new Stage();
-            try {
-                VBox candidateInfoCard = fxmlLoader.load();
-                CandidateInfoController candidateInfoController = fxmlLoader.getController();
-                candidateInfoController.setData(candidate);
-                Scene candidateScene = new Scene(candidateInfoCard);
-                candidateScene.setFill(Color.TRANSPARENT);
-                candidateStage.initStyle(StageStyle.UNDECORATED);
-                candidateStage.initStyle(StageStyle.TRANSPARENT);
-                makeDraggable(candidateScene, candidateStage);
-                candidateStage.setScene(candidateScene);
-                candidateStage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-    public void makeDraggable(Scene scene, Stage stage) {
-        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
-        });
+    @FXML
+    protected void onViewCandidateButton() throws IOException, ParseException {
+        Scenery.getInstance().getCandidateDetailsController().drawData(candidate);
+        Scenery.getInstance().changeScene(Screen.CANDIDATE_DETAILS);
     }
 
 }

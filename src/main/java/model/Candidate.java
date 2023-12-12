@@ -13,6 +13,8 @@ public class Candidate {
     private List<String> skills;
     private String avatar;
     private EStatus status;
+    private String phone;
+    private String mail;
 
     public Candidate() {
         this.jobs = new ArrayList<>();
@@ -94,5 +96,21 @@ public class Candidate {
 
     public void setStatus(EStatus status) {
         this.status = status;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

@@ -182,14 +182,46 @@
          <children>
             <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
                <padding>
-                  <Insets bottom="24.0" left="32.0" right="28.0" top="24.0" />
+                  <Insets bottom="24.0" left="32.0" right="32.0" top="24.0" />
                </padding>
                <children>
-                  <Label fx:id="cardTitle" style="-fx-font-weight: 700; -fx-font-family: Roboto Flex;" text="Senior Software Developer">
-                     <font>
-                        <Font name="Roboto Flex Regular" size="24.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <Label fx:id="cardTitle" style="-fx-font-weight: 700; -fx-font-family: Roboto Flex;" text="Senior Software Developer">
+                           <font>
+                              <Font name="Roboto Flex Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" spacing="8.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox fx:id="archiveButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #FFCFCF; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label alignment="CENTER" onMouseClicked="#onArchiveButtonClick" style="-fx-font-family: Roboto Flex;" text="Archive Role" textFill="#d00000" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox fx:id="exportCSVButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #1D7B32; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label alignment="CENTER" style="-fx-font-family: Roboto Flex;" text="Export CSV" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="198.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #20399E; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label fx:id="shareRoleButton" alignment="CENTER" style="-fx-font-family: Roboto Flex;" text="Share role" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                   <ScrollPane hbarPolicy="NEVER" pannable="true" stylesheets="@../../../style.css" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox fx:id="candidatesCardLayout" />
