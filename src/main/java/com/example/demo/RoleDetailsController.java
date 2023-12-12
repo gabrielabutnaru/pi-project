@@ -49,12 +49,19 @@ public class RoleDetailsController {
     }
 
     /*
+    TODO
     Nu se loaduie cand trebuie!
      */
     @FXML
     private void onArchiveButtonClick() throws IOException {
         role.setActive(false);
         Scenery.getInstance().changeScene(Screen.DASHBOARD);
+    }
+
+    @FXML
+    private void onShareButtonClick() throws IOException {
+        //Scenery.getInstance().getShareWithController().drawData();
+        Scenery.getInstance().changeScene(Screen.SHARE_WITH);
     }
 
     public void drawData(Role role) {
@@ -99,7 +106,7 @@ public class RoleDetailsController {
             try {
                 HBox cardBox = fxmlLoader.load();
                 CandidateCardController cardController = fxmlLoader.getController();
-                cardController.setData(c);
+                cardController.drawData(c);
                 candidatesCardLayout.getChildren().add(cardBox);
                 candidatesCardLayout.getChildren().add(new Separator());
             } catch (IOException | ParseException e) {

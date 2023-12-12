@@ -1,8 +1,10 @@
 package com.example.demo;
 
+import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,7 +22,9 @@ import model.Role;
 import model.Screen;
 
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
+import java.util.ResourceBundle;
 
 public class CandidateCardController {
     @FXML
@@ -40,11 +44,11 @@ public class CandidateCardController {
 
     private Candidate candidate;
 
-
     /*
+    TODO
     Nu se loaduie cand trebuie! Also daca modific statusul unui candidat pe un anumit rol, atunci se modifica peste tot.
      */
-    public void setData(Candidate candidate) throws ParseException {
+    public void drawData(Candidate candidate) throws ParseException {
         this.candidate = candidate;
 
         candidateName.setText(candidate.getFirstName() + " " + candidate.getLastName());

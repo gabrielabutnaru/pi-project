@@ -20,8 +20,6 @@ public class NewRoleController implements Initializable {
     @FXML
     private TextField skillsField;
     @FXML
-    private HBox addSkillButton;
-    @FXML
     private FlowPane skillsContainer;
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
@@ -34,16 +32,14 @@ public class NewRoleController implements Initializable {
                 drawChips();
             }
         });
+    }
 
-        addSkillButton.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (!Objects.equals(skillsField.getText(), "")) {
-                    skills.add(skillsField.getText());
-                    skillsField.setText("");
-                }
-            }
-        });
+    @FXML
+    private void onAddSkillButtonClick() {
+        if (!Objects.equals(skillsField.getText(), "")) {
+            skills.add(skillsField.getText());
+            skillsField.setText("");
+        }
     }
 
     public void drawChips() {

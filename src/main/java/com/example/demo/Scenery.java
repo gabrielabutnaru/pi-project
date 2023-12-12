@@ -33,6 +33,9 @@ public class Scenery {
     private final Scene candidateDetails;
     private final CandidateDetailsController candidateDetailsController;
 
+    private final Scene shareWith;
+    private final ShareWithController shareWithController;
+
     private Scenery() throws IOException {
         this.stage = new Stage();
 
@@ -51,6 +54,10 @@ public class Scenery {
         Pair<Scene, FXMLLoader> candidateDetailsPair = createScene("candidate-details.fxml");
         this.candidateDetails = candidateDetailsPair.getKey();
         this.candidateDetailsController = candidateDetailsPair.getValue().getController();
+
+        Pair<Scene, FXMLLoader> shareWithPair = createScene("share-with.fxml");
+        this.shareWith = shareWithPair.getKey();
+        this.shareWithController = shareWithPair.getValue().getController();
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -111,6 +118,8 @@ public class Scenery {
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {
             this.stage.setScene(this.candidateDetails);
+        } else if (screen == Screen.SHARE_WITH) {
+            this.stage.setScene(this.shareWith);
         }
     }
 
@@ -119,6 +128,10 @@ public class Scenery {
     }
     public CandidateDetailsController getCandidateDetailsController() {
         return this.candidateDetailsController;
+    }
+
+    public ShareWithController getShareWithController() {
+        return this.shareWithController;
     }
 
 }

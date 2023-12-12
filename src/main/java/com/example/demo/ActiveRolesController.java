@@ -26,7 +26,7 @@ public class ActiveRolesController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("active-card.fxml"));
                 VBox cardBox = fxmlLoader.load();
                 ActiveCardController cardController = fxmlLoader.getController();
-                cardController.setData(activeRoles.get(i));
+                cardController.drawData(activeRoles.get(i));
                 activeCardLayout.getChildren().add(cardBox);
                 if (i != activeRoles.size() - 1) {
                     activeCardLayout.getChildren().add(new Separator());

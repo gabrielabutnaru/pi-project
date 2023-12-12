@@ -41,7 +41,13 @@ public class ActiveCardController {
     private HBox barOmitted;
     private Role role;
 
-    public void setData(Role role) {
+    @FXML
+    public void onCardButtonClick() throws IOException {
+        Scenery.getInstance().getRoleDetailsController().drawData(role);
+        Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
+    }
+
+    public void drawData(Role role) {
         this.role = role;
 
         cardOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
@@ -69,11 +75,5 @@ public class ActiveCardController {
         LocalDate postDate = role.getDate();
         long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
         cardDate.setText(Long.toString(diffInDays));
-    }
-
-    @FXML
-    public void onCardButtonClick() throws IOException {
-        Scenery.getInstance().getRoleDetailsController().drawData(role);
-        Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 }

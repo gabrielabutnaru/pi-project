@@ -68,7 +68,7 @@
                               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" spacing="4.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2;">
                                  <children>
                                     <TextField fx:id="skillsField" style="-fx-background-color: transparent; -fx-border-color: transparent;" HBox.hgrow="ALWAYS" />
-                                    <HBox fx:id="addSkillButton" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: #CBD2E0; -fx-shape: &quot;M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z&quot;;">
+                                    <HBox fx:id="addSkillButton" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onAddSkillButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: #CBD2E0; -fx-shape: &quot;M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z&quot;;">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
