@@ -8,9 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import model.Screen;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,14 +22,32 @@ import java.util.*;
 
 public class NewRoleController implements Initializable {
     @FXML
+    private Circle myCircle;
+    @FXML
     private TextField skillsField;
     @FXML
     private FlowPane skillsContainer;
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
+    @FXML
+    public void onActiveRolesButtonClick() throws IOException {
+        Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
+    }
+
+    @FXML
+    public void onArchivedRolesButtonClick() throws IOException {
+        Scenery.getInstance().changeScene(Screen.ARCHIVED_ROLES);
+    }
+
+    @FXML
+    private void onLogOutButtonClick() throws IOException {
+        Scenery.getInstance().changeScene(Screen.LOGIN);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
         skills.addListener(new ListChangeListener<String>() {
             @Override
             public void onChanged(Change<? extends String> change) {

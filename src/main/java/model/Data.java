@@ -7,7 +7,6 @@ import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Data {
-
     private static Connection connection;
 
     static {
@@ -17,7 +16,6 @@ public class Data {
             throw new RuntimeException(e);
         }
     }
-
 
     public static boolean isUserValid(String username, String password) throws SQLException {
         String md5Password = DigestUtils.md5Hex(password);

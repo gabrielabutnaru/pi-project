@@ -2,7 +2,9 @@ package model;
 
 public enum Screen {
     LOGIN,
-    DASHBOARD,
+    ACTIVE_ROLES,
+    ARCHIVED_ROLES,
+    NEW_ROLE,
     ROLE_DETAILS,
     CANDIDATE_DETAILS,
     SHARE_WITH

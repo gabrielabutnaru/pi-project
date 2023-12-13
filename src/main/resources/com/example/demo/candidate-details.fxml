@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateDetailsController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateDetailsController">
    <padding>
       <Insets bottom="32.0" left="32.0" right="32.0" />
    </padding>
@@ -27,15 +25,18 @@
                <children>
                   <HBox alignment="TOP_CENTER" minHeight="-Infinity">
                      <children>
-                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;" />
+                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></HBox>
                         <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="cardDays" style="-fx-font-family: Roboto Flex;" text="Current status: " textFill="#121212">
+                              <Label fx:id="cardDays" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Current status: ">
                                  <font>
                                     <Font name="Roboto Flex Regular" size="10.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="candidateStatus" style="-fx-font-family: Roboto Flex;" text="IN TOUCH" textFill="#777777">
+                              <Label fx:id="candidateStatus" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="IN TOUCH" >
                                  <font>
                                     <Font name="Roboto Flex Regular" size="10.0" />
                                  </font>
@@ -51,38 +52,38 @@
                               <Rectangle fx:id="candidateAvatar" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="261.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="206.0" />
                               <VBox>
                                  <children>
-                                    <Label fx:id="candidateName" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Maria Piersica" textFill="#121212">
+                                    <Label fx:id="candidateName" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Maria Piersica" >
                                        <font>
                                           <Font name="Roboto Flex Regular" size="32.0" />
                                        </font>
                                     </Label>
                                     <HBox>
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Age: " textFill="#777777" />
-                                          <Label fx:id="candidateAge" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text="30" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Age: " />
+                                          <Label fx:id="candidateAge" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="30" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="58.0">
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Mail: " textFill="#777777" />
-                                          <Label fx:id="candidateMail" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text="mariapiersica@gmail.com" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Mail: " />
+                                          <Label fx:id="candidateMail" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="mariapiersica@gmail.com" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="58.0">
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Phone: " textFill="#777777" />
-                                          <Label fx:id="candidatePhone" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text="0712345678" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Phone: " />
+                                          <Label fx:id="candidatePhone" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="0712345678" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="28.0">
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="City: " textFill="#777777" />
-                                          <Label fx:id="candidateCity" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text="Timisoara, Romania" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="City: "  />
+                                          <Label fx:id="candidateCity" layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="Timisoara, Romania"  />
                                        </children>
                                     </HBox>
                                     <VBox>
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Skills:" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Skills:" />
                                           <ScrollPane hbarPolicy="NEVER" stylesheets="@../../../style.css" vbarPolicy="NEVER">
                                              <styleClass>
                                                 <String fx:value="decrement-arrow" />
@@ -100,7 +101,7 @@
                                     </VBox>
                                     <VBox layoutX="10.0" layoutY="87.0">
                                        <children>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Jobs:" textFill="#777777" />
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Jobs:" />
                                           <ScrollPane hbarPolicy="NEVER" stylesheets="@../../../style.css">
                                              <styleClass>
                                                 <String fx:value="decrement-arrow" />
@@ -136,7 +137,7 @@
                                                 <Cursor fx:constant="DEFAULT" />
                                              </cursor>
                                           </HBox>
-                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Fail" textFill="#d00000" />
+                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;-fx-text-background-color: #D00000" text="Fail" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
@@ -152,7 +153,7 @@
                                                 <Cursor fx:constant="DEFAULT" />
                                              </cursor>
                                           </HBox>
-                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Omit" textFill="#ef8523" />
+                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #ef8523 " text="Omit" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
@@ -168,7 +169,7 @@
                                                 <Cursor fx:constant="DEFAULT" />
                                              </cursor>
                                           </HBox>
-                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="In touch" textFill="#223ca4" />
+                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #223ca4" text="In touch" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
@@ -184,7 +185,7 @@
                                                 <Cursor fx:constant="DEFAULT" />
                                              </cursor>
                                           </HBox>
-                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Confirmed" textFill="#1d7b32" />
+                                          <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #1d7b32" text="Confirmed" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />

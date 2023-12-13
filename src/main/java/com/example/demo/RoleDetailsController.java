@@ -8,10 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Candidate;
-import model.EStatus;
-import model.Role;
-import model.Screen;
+import model.*;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -25,27 +22,39 @@ import java.util.List;
 public class RoleDetailsController {
     @FXML
     private VBox candidatesCardLayout;
+
     @FXML
     private Label cardBudgetRange;
+
     @FXML
     private Label cardCandidates;
+
     @FXML
     private Label cardCity;
+
     @FXML
     private Label cardConfirmed;
+
     @FXML
     private Label cardDays;
+
     @FXML
     private Label cardOmitted;
+
     @FXML
     private Label cardTitle;
+
     @FXML
     private FlowPane skillsScroll;
 
+    @FXML
+    private Label userFullName;
+
     private Role role;
+
     @FXML
     private void onBackButtonClick() throws IOException {
-        Scenery.getInstance().changeScene(Screen.DASHBOARD);
+        Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     /*
@@ -55,7 +64,7 @@ public class RoleDetailsController {
     @FXML
     private void onArchiveButtonClick() throws IOException {
         role.setActive(false);
-        Scenery.getInstance().changeScene(Screen.DASHBOARD);
+        Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     @FXML
@@ -87,16 +96,19 @@ public class RoleDetailsController {
 
         skillsScroll.getChildren().clear();
         role.getSkills().forEach(s -> {
+
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("no-x-chip.fxml"));
+            HBox chip = null;
             try {
-                HBox chip = fxmlLoader.load();
-                NoXChipController chipController = fxmlLoader.getController();
-                chipController.setData(s);
-                skillsScroll.getChildren().add(chip);
+                chip = fxmlLoader.load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            NoXChipController chipController = fxmlLoader.getController();
+            chipController.setData(s);
+            skillsScroll.getChildren().add(chip);
+
         });
 
         candidatesCardLayout.getChildren().clear();
@@ -113,5 +125,10 @@ public class RoleDetailsController {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    public void drawUserData(User user) {
+        //        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
+        this.userFullName.setText(user.getFirstName() + " " + user.getLastName());
     }
 }

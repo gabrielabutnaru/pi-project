@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="mainBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="459.0" style="-fx-background-color: linear-gradient(to top, #0D1C58 -10.05%,  #2541B2 108.91%); -fx-background-radius: 18; -fx-border-radius: 18;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.InvalidModelController">
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+   <children>
+      <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="8.0" left="24.0" right="8.0" top="8.0" />
+         </padding>
+         <children>
+            <HBox nodeOrientation="RIGHT_TO_LEFT">
+               <children>
+                  <Button fx:id="exitButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onExitButtonClick" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: #2541B2; -fx-shape: 'M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z';">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </HBox>
+            <Label style="-fx-font-weight: 700; -fx-font-family: Roboto Flex;" text="Invalid username or password">
+               <font>
+                  <Font name="Roboto Flex Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="42.0" text="Please try again">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>

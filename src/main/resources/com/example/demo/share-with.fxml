@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -23,8 +24,11 @@
                <children>
                   <HBox alignment="CENTER_LEFT" minHeight="-Infinity" spacing="12.0">
                      <children>
-                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;" />
-                        <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Share with" textFill="#121212">
+                        <HBox fx:id="backButton" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-shape: &quot;M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z&quot;; -fx-background-color: #121212;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></HBox>
+                        <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Share with" >
                            <font>
                               <Font name="Roboto Flex Regular" size="20.0" />
                            </font>
@@ -48,7 +52,7 @@
                      <children>
                         <HBox fx:id="shareButton" alignment="CENTER" maxWidth="-Infinity" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
                            <children>
-                              <Label style="-fx-font-family: Roboto Flex;" text="Share" textFill="WHITE">
+                              <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="Share">
                                  <font>
                                     <Font name="Roboto Flex Regular" size="16.0" />
                                  </font>
@@ -57,6 +61,9 @@
                            <padding>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </HBox>
                      </children>
                   </HBox>

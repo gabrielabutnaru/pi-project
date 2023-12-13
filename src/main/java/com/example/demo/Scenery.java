@@ -24,8 +24,14 @@ public class Scenery {
     private final Scene login;
     private final LoginController loginController;
 
-    private final Scene dashboard;
-    private final DashboardController dashboardController;
+    private final Scene activeRoles;
+    private final ActiveRolesController activeRolesController;
+
+    private final Scene archivedRoles;
+    private final ArchivedRolesController archivedRolesController;
+
+    private final Scene newRole;
+    private final NewRoleController newRoleController;
 
     private final Scene roleDetails;
     private final RoleDetailsController roleDetailsController;
@@ -43,9 +49,17 @@ public class Scenery {
         this.login = loginPair.getKey();
         this.loginController = loginPair.getValue().getController();
 
-        Pair<Scene, FXMLLoader> dashboardPair = createScene("dashboard.fxml");
-        this.dashboard = dashboardPair.getKey();
-        this.dashboardController = dashboardPair.getValue().getController();
+        Pair<Scene, FXMLLoader> activeRolesPair = createScene("active-roles.fxml");
+        this.activeRoles = activeRolesPair.getKey();
+        this.activeRolesController = activeRolesPair.getValue().getController();
+
+        Pair<Scene, FXMLLoader> archivedRolesPair = createScene("archived-roles.fxml");
+        this.archivedRoles = archivedRolesPair.getKey();
+        this.archivedRolesController = archivedRolesPair.getValue().getController();
+
+        Pair<Scene, FXMLLoader> newRolePair = createScene("new-role.fxml");
+        this.newRole = newRolePair.getKey();
+        this.newRoleController = newRolePair.getValue().getController();
 
         Pair<Scene, FXMLLoader> roleDetailsPair = createScene("role-details.fxml");
         this.roleDetails = roleDetailsPair.getKey();
@@ -112,8 +126,12 @@ public class Scenery {
     public void changeScene(Screen screen) {
         if (screen == Screen.LOGIN) {
             this.stage.setScene(this.login);
-        } else if (screen == Screen.DASHBOARD) {
-            this.stage.setScene(this.dashboard);
+        } else if (screen == Screen.ACTIVE_ROLES) {
+            this.stage.setScene(this.activeRoles);
+        } else if (screen == Screen.ARCHIVED_ROLES) {
+            this.stage.setScene(this.archivedRoles);
+        } else if (screen == Screen.NEW_ROLE) {
+            this.stage.setScene(this.newRole);
         } else if (screen == Screen.ROLE_DETAILS) {
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {
@@ -129,9 +147,4 @@ public class Scenery {
     public CandidateDetailsController getCandidateDetailsController() {
         return this.candidateDetailsController;
     }
-
-    public ShareWithController getShareWithController() {
-        return this.shareWithController;
-    }
-
 }

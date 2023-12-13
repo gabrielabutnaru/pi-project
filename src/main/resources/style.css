@@ -8,6 +8,14 @@
     -fx-background-color: #FFFFFF;
 }
 
+*.label {
+    -fx-text-background-color: #121212;
+}
+
+*.separator:horizontal *.line {
+    -fx-border-color: #777777;
+}
+
 .scroll-pane{
     -fx-background-color:transparent;
 }

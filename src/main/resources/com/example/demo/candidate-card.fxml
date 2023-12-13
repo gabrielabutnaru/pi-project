@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="candidateContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateCardController">
+<HBox fx:id="candidateContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CandidateCardController">
    <children>
       <HBox alignment="CENTER_LEFT" spacing="8.0" HBox.hgrow="SOMETIMES">
          <children>
             <Circle fx:id="candidateAvatar" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <VBox alignment="CENTER_LEFT" prefWidth="202.0">
                <children>
-                  <Label fx:id="candidateName" graphicTextGap="0.0" layoutX="10.0" layoutY="39.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Maria Piersica">
+                  <Label fx:id="candidateName" graphicTextGap="0.0" layoutX="10.0" layoutY="39.0" text="Maria Piersica">
                      <font>
-                        <Font name="Roboto Flex Regular" size="16.0" />
+                        <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <HBox>
+                  <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label fx:id="candidateJob" style="-fx-font-family: Roboto Flex;" text="Software Engineer" textFill="#777777">
+                        <Label fx:id="candidateJob" text="Software Engineer" style="-fx-text-background-color: #777777">
                            <font>
-                              <Font name="Roboto Flex Regular" size="10.0" />
+                              <Font name="Arial" size="10.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" style="-fx-font-family: Roboto Flex;" text=" at " textFill="#777777">
+                        <Label layoutX="10.0" layoutY="10.0" text=" at " style="-fx-text-background-color: #777777">
                            <font>
-                              <Font name="Roboto Flex Regular" size="10.0" />
+                              <Font name="Arial" size="10.0" />
                            </font>
                         </Label>
-                        <Label fx:id="candidateCompany" layoutX="119.0" layoutY="10.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700;" text="Amazon" textFill="#777777">
+                        <Label fx:id="candidateCompany" layoutX="119.0" layoutY="10.0" text="Amazon" style="-fx-text-background-color: #777777">
                            <font>
-                              <Font name="Roboto Flex Regular" size="10.0" />
+                              <Font name="Arial Bold" size="10.0" />
                            </font>
                         </Label>
                      </children>
@@ -45,15 +47,18 @@
          <children>
             <HBox fx:id="viewCandidateButton" alignment="CENTER" maxWidth="-Infinity" onMouseClicked="#onViewCandidateButton" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
                <children>
-                  <Label style="-fx-font-family: Roboto Flex;" text="View candidate" textFill="WHITE">
+                  <Label text="View candidate" style="-fx-text-background-color: #FFFFFF">
                      <font>
-                        <Font name="Roboto Flex Regular" size="12.0" />
+                        <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
                </children>
                <padding>
                   <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </HBox>
          </children>
          <padding>
