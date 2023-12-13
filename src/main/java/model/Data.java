@@ -1,12 +1,31 @@
 package model;
 
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class Data {
+
+    private static Connection connection;
+
+    static {
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pi", "root", "");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static boolean isUserValid(String username, String password) throws SQLException {
+        String md5Password = DigestUtils.md5Hex(password);
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE username = '" + username + "' AND password = '" + md5Password + "'");
+        ResultSet rs = ps.executeQuery();
+        return rs.isBeforeFirst();
+    }
+
     public static List<Role> roles = new ArrayList<>(getPosts());
 
     private static List<Role> getPosts() {
@@ -154,4 +173,5 @@ public class Data {
         roles.add(role4);
         return roles;
     }
+
 }

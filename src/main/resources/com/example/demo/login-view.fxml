@@ -33,7 +33,7 @@
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
                                           </Label>
-                                          <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="222.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2;" />
+                                          <TextField fx:id="usernameField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="222.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2;" />
                                        </HBox>
                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="308.0" spacing="10.0" VBox.vgrow="ALWAYS">
                                           <children>
@@ -42,7 +42,7 @@
                                                    <Font name="Roboto Light" size="16.0" />
                                                 </font>
                                              </Label>
-                                             <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="222.0" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-border-width: 2;" />
+                                             <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="222.0" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-border-width: 2;" />
                                           </children>
                                        </HBox>
                                     </VBox>
