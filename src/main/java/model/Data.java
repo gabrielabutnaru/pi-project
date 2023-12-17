@@ -33,7 +33,7 @@ public class Data {
         put("FAILED", EStatus.FAILED);
     }};
 
-    private static final Map<EStatus, String> EStatusToString = new HashMap<>(){{
+    public static final Map<EStatus, String> EStatusToString = new HashMap<>(){{
         put(EStatus.DEFAULT, "DEFAULT");
         put(EStatus.IN_TOUCH, "IN_TOUCH");
         put(EStatus.EMPLOYED, "EMPLOYED");

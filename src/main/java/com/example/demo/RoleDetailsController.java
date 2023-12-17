@@ -7,17 +7,24 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class RoleDetailsController {
@@ -59,6 +66,49 @@ public class RoleDetailsController {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
+    @FXML
+    private void onExportToCSVButtonClick() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        Role role = Data.getCurrentRole();
+        String fileName = role.getTitle() + " by " + role.getOwner().getFirstName() + " " + role.getOwner().getLastName() + " - generat la " + LocalDate.now() + ".csv";
+        fileChooser.setInitialFileName(fileName);
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showSaveDialog(Scenery.getInstance().getStage());
+
+        if (file != null) {
+            List<String[]> dataLines = new ArrayList<>();
+            dataLines.add(new String[]{"First Name", "Last Name", "Age", "City", "Phone", "Current Status"});
+            for (Candidate candidate : role.getCandidates()) {
+                dataLines.add(new String[]{candidate.getFirstName(), candidate.getLastName(), Integer.toString(candidate.getAge()), candidate.getCity(), candidate.getPhone(), Data.EStatusToString.get(candidate.getStatus())});
+            }
+            try (PrintWriter pw = new PrintWriter(file)) {
+                dataLines.stream()
+                        .map(this::convertToCSV)
+                        .forEach(pw::println);
+            }
+        }
+    }
+
+    public String convertToCSV(String[] data) {
+        return Stream.of(data)
+                .map(this::escapeSpecialCharacters)
+                .collect(Collectors.joining(","));
+    }
+
+    private String escapeSpecialCharacters(String data) {
+        if (data == null) {
+            throw new IllegalArgumentException("Input data cannot be null");
+        }
+        String escapedData = data.replaceAll("\\R", " ");
+        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
+            data = data.replace("\"", "\"\"");
+            escapedData = "\"" + data + "\"";
+        }
+        return escapedData;
+    }
 
     @FXML
     private void onShareButtonClick() throws IOException {
