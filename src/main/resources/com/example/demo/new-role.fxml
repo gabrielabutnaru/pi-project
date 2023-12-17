@@ -3,8 +3,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" spacing="32.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.NewRoleController">
@@ -20,7 +20,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="155.0" prefWidth="207.0" spacing="8.0">
                            <children>
-                              <Circle fx:id="myCircle" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <ImageView fx:id="userAvatar" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" />
                               <VBox alignment="CENTER" maxWidth="-Infinity">
                                  <children>
                                     <Label fx:id="userFullName" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Andra Enea" textAlignment="CENTER">

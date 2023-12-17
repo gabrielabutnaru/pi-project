@@ -18,19 +18,27 @@ public class Data {
         }
     }
 
-    private static Map<String, ESeniority> stringToESeniority = new HashMap<>(){{
+    private static final Map<String, ESeniority> stringToESeniority = new HashMap<>(){{
         put("ENTRY", ESeniority.ENTRY);
         put("JUNIOR", ESeniority.JUNIOR);
         put("MIDDLE", ESeniority.MIDDLE);
         put("SENIOR", ESeniority.SENIOR);
     }};
 
-    private static Map<String, EStatus> stringToEStatus = new HashMap<>(){{
+    private static final Map<String, EStatus> stringToEStatus = new HashMap<>(){{
         put("DEFAULT", EStatus.DEFAULT);
         put("IN_TOUCH", EStatus.IN_TOUCH);
         put("EMPLOYED", EStatus.EMPLOYED);
         put("OMITTED", EStatus.OMITTED);
         put("FAILED", EStatus.FAILED);
+    }};
+
+    private static final Map<EStatus, String> EStatusToString = new HashMap<>(){{
+        put(EStatus.DEFAULT, "DEFAULT");
+        put(EStatus.IN_TOUCH, "IN_TOUCH");
+        put(EStatus.EMPLOYED, "EMPLOYED");
+        put(EStatus.OMITTED, "OMITTED");
+        put(EStatus.FAILED, "FAILED");
     }};
 
     private static User currentUser;
@@ -93,5 +101,50 @@ public class Data {
 
     public static void archiveRole(int roleId) throws SQLException {
         connection.prepareStatement("UPDATE roles SET isActive = 0 WHERE id = " + roleId).executeUpdate();
+    }
+
+    public static void setCandidateStatus(EStatus status, int candidateId, int roleId) throws SQLException {
+        connection.prepareStatement("UPDATE statuses SET type = '" + EStatusToString.get(status) + "' WHERE candidateId = " + candidateId + " AND roleId = " + roleId).executeUpdate();
+    }
+
+    private static int currentRoleId;
+
+    public static Role getCurrentRole() {
+        for (Role role : roles) {
+            if (role.getId() == currentRoleId)
+                return role;
+        }
+        return null;
+    }
+
+    public static int getCurrentRoleId() {
+        return currentRoleId;
+    }
+
+    public static void setCurrentRoleId(int currentRoleId) {
+        Data.currentRoleId = currentRoleId;
+    }
+
+    private static int currentCandidateId;
+
+    public static Candidate getCurrentCandidate() {
+        for (Role role : roles) {
+            if (role.getId() == currentRoleId) {
+                for (Candidate candidate : role.getCandidates()) {
+                    if (candidate.getId() == currentCandidateId) {
+                        return candidate;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public static int getCurrentCandidateId() {
+        return currentCandidateId;
+    }
+
+    public static void setCurrentCandidateId(int currentCandidateId) {
+        Data.currentCandidateId = currentCandidateId;
     }
 }

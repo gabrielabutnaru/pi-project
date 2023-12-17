@@ -4,8 +4,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="519.0" prefWidth="1024.0" spacing="32.0" style="-fx-background-color: #B4C0F0; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ActiveRolesController">
@@ -21,7 +21,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="155.0" prefWidth="207.0" spacing="8.0">
                            <children>
-                              <Circle fx:id="myCircle" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <ImageView fx:id="userAvatar" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" />
                               <VBox alignment="CENTER" maxWidth="-Infinity">
                                  <children>
                                     <Label fx:id="userFullName" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Andra Enea" textAlignment="CENTER">
@@ -29,7 +29,7 @@
                                           <Font name="Roboto Flex Regular" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" style="-fx-font-weight: 300; -fx-text-background-color: #777777" text="HR Employee" textAlignment="CENTER" >
+                                    <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" style="-fx-font-weight: 300; -fx-text-background-color: #777777" text="HR Employee" textAlignment="CENTER">
                                        <font>
                                           <Font name="Inter Italic" size="10.0" />
                                        </font>
@@ -77,7 +77,7 @@
                   <HBox fx:id="newRoleButton" alignment="CENTER_LEFT" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#onNewRoleButtonClick" spacing="12.0">
                      <children>
                         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="18.0" style="-fx-shape: &quot;M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z&quot;; -fx-background-color: #FFFFFF;" />
-                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="New Role" >
+                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="New Role">
                            <font>
                               <Font name="Roboto Flex Regular" size="16.0" />
                            </font>

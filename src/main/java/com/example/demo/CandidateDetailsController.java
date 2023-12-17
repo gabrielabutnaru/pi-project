@@ -5,25 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.Candidate;
+import model.Data;
 import model.EStatus;
 import model.Screen;
 
 import java.io.IOException;
-import java.text.ParseException;
+import java.sql.SQLException;
 
 public class CandidateDetailsController {
     @FXML
     private Label candidateAge;
 
     @FXML
-    private Rectangle candidateAvatar;
+    private ImageView candidateAvatar;
 
     @FXML
     private Label candidateCity;
@@ -46,38 +49,46 @@ public class CandidateDetailsController {
     @FXML
     private Label candidateStatus;
 
-    private Candidate candidate;
 
     @FXML
-    void onBackButtonClick(MouseEvent event) throws IOException {
+    void onBackButtonClick(MouseEvent event) throws IOException, SQLException {
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
     @FXML
-    void onOmitButtonClick(MouseEvent event) {
-        candidate.setStatus(EStatus.OMITTED);
+    void onOmitButtonClick(MouseEvent event) throws SQLException {
+        Data.setCandidateStatus(EStatus.OMITTED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
+        Data.loadRoles();
+        redraw();
     }
 
     @FXML
-    void onFailButtonClick(MouseEvent event) {
-        candidate.setStatus(EStatus.FAILED);
+    void onFailButtonClick(MouseEvent event) throws SQLException {
+        Data.setCandidateStatus(EStatus.FAILED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
+        Data.loadRoles();
+        redraw();
     }
 
     @FXML
-    void onInTouchButtonClick(MouseEvent event) {
-        candidate.setStatus(EStatus.IN_TOUCH);
+    void onInTouchButtonClick(MouseEvent event) throws SQLException {
+        Data.setCandidateStatus(EStatus.IN_TOUCH, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
+        Data.loadRoles();
+        redraw();
     }
 
     @FXML
-    void onConfirmedButtonClick(MouseEvent event) {
-        candidate.setStatus(EStatus.EMPLOYED);
+    void onConfirmedButtonClick(MouseEvent event) throws SQLException {
+        Data.setCandidateStatus(EStatus.EMPLOYED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
+        Data.loadRoles();
+        redraw();
     }
 
 
-    public void drawData(Candidate c) throws ParseException {
-        this.candidate = c;
+    public void redraw() {
+        Candidate c = Data.getCurrentCandidate() ;
         candidateAge.setText(Integer.toString(c.getAge()));
-        candidateAvatar.setFill(new ImagePattern(new Image(c.getAvatar(), false)));
+        candidateAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
         candidateCity.setText(c.getCity());
         candidateMail.setText(c.getMail());
         candidatePhone.setText(c.getPhone());

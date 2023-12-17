@@ -49,18 +49,14 @@ public class RoleDetailsController {
     private FlowPane skillsScroll;
 
     @FXML
-    private Label userFullName;
-
-    private Role role;
-
-    @FXML
-    private void onBackButtonClick() throws IOException {
+    private void onBackButtonClick() throws IOException, SQLException {
+        //Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     @FXML
     private void onArchiveButtonClick() throws IOException, SQLException {
-        Data.archiveRole(role.getId());
+        Data.archiveRole(Data.getCurrentRoleId());
         Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
@@ -72,8 +68,8 @@ public class RoleDetailsController {
         Scenery.getInstance().changeScene(Screen.SHARE_WITH);
     }
 
-    public void drawData(Role role) {
-        this.role = role;
+    public void redraw() {
+        Role role = Data.getCurrentRole();
 
         LocalDate currentDate = LocalDate.now();
         LocalDate postDate = role.getDate();
@@ -124,10 +120,5 @@ public class RoleDetailsController {
                 throw new RuntimeException(e);
             }
         });
-    }
-
-    public void drawUserData(User user) {
-        //        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
-        this.userFullName.setText(user.getFirstName() + " " + user.getLastName());
     }
 }

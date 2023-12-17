@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -25,7 +26,7 @@ import java.util.*;
 
 public class NewRoleController implements Initializable {
     @FXML
-    private Circle myCircle;
+    private ImageView userAvatar;
 
     @FXML
     private TextField skillsField;
@@ -65,7 +66,9 @@ public class NewRoleController implements Initializable {
 
 
     public void redraw() {
-        myCircle.setFill(new ImagePattern(new Image(Data.getCurrentUser().getAvatar(), false)));
+        Circle clip = new Circle(32, 32, 32);
+        userAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
+        userAvatar.setClip(clip);
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         skills.clear();
     }

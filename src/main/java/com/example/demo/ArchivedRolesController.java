@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -26,7 +27,7 @@ public class ArchivedRolesController {
     private VBox archivedCardLayout;
 
     @FXML
-    private Circle myCircle;
+    private ImageView userAvatar;
 
     @FXML
     private Label userFullName;
@@ -50,7 +51,9 @@ public class ArchivedRolesController {
 
     public void redraw() {
         archivedCardLayout.getChildren().clear();
-        myCircle.setFill(new ImagePattern(new Image(Data.getCurrentUser().getAvatar(), false)));
+        Circle clip = new Circle(32, 32, 32);
+        userAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
+        userAvatar.setClip(clip);
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         try {
             List<Role> archivedRoles = Data.roles.stream().filter(r -> !r.isActive()).toList();

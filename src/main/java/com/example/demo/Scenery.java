@@ -137,7 +137,7 @@ public class Scenery {
             this.newRoleController.redraw();
             this.stage.setScene(this.newRole);
         } else if (screen == Screen.ROLE_DETAILS) {
-            //this.roleDetailsController.redraw();
+            this.roleDetailsController.redraw();
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {
             //this.candidateDetailsController.redraw();

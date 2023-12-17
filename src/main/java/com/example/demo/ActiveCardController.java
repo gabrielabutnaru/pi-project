@@ -3,10 +3,7 @@ package com.example.demo;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import model.Candidate;
-import model.EStatus;
-import model.Role;
-import model.Screen;
+import model.*;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -43,7 +40,8 @@ public class ActiveCardController {
 
     @FXML
     public void onCardButtonClick() throws IOException {
-        Scenery.getInstance().getRoleDetailsController().drawData(role);
+        Data.setCurrentRoleId(role.getId());
+        Scenery.getInstance().getRoleDetailsController().redraw();
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
