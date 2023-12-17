@@ -52,7 +52,6 @@ public class CandidateDetailsController {
 
     @FXML
     void onBackButtonClick(MouseEvent event) throws IOException, SQLException {
-        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
@@ -88,7 +87,7 @@ public class CandidateDetailsController {
     public void redraw() {
         Candidate c = Data.getCurrentCandidate() ;
         candidateAge.setText(Integer.toString(c.getAge()));
-        candidateAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
+        candidateAvatar.setImage(new Image(c.getAvatar(), true));
         candidateCity.setText(c.getCity());
         candidateMail.setText(c.getMail());
         candidatePhone.setText(c.getPhone());

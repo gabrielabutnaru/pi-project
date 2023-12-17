@@ -149,6 +149,11 @@ public class Scenery {
             this.newRoleController.redraw();
             this.stage.setScene(this.newRole);
         } else if (screen == Screen.ROLE_DETAILS) {
+            try {
+                Data.loadRoles();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             this.roleDetailsController.redraw();
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {

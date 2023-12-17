@@ -82,6 +82,7 @@ public class Data {
         ResultSet rsCandidate = psCandidate.executeQuery();
         while (rsCandidate.next()) {
             Candidate candidate = new Candidate(rsCandidate.getInt("id"), rsCandidate.getString("firstName"), rsCandidate.getString("lastName"), rsCandidate.getInt("age"), rsCandidate.getString("city"), rsCandidate.getString("avatar"), rsCandidate.getString("mail"), rsCandidate.getString("phone"), stringToEStatus.get(rsCandidate.getString("type")));
+            Arrays.stream(rsCandidate.getString("skills").split(",")).forEach(s -> candidate.getSkills().add(s));
             PreparedStatement psJob = connection.prepareStatement("SELECT * FROM jobs WHERE owner = " + rsCandidate.getInt("id"));
             ResultSet rsJob = psJob.executeQuery();
             while (rsJob.next()) {

@@ -84,7 +84,7 @@
                                     <VBox>
                                        <children>
                                           <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #777777" text="Skills:" />
-                                          <ScrollPane hbarPolicy="NEVER" stylesheets="@../../../style.css" vbarPolicy="NEVER">
+                                          <ScrollPane stylesheets="@../../../style.css" vbarPolicy="NEVER">
                                              <styleClass>
                                                 <String fx:value="decrement-arrow" />
                                                 <String fx:value="decrement-button" />
