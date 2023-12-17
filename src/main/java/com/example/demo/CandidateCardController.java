@@ -66,14 +66,11 @@ public class CandidateCardController {
         } else if (candidate.getStatus() == EStatus.EMPLOYED) {
             candidateContainer.setStyle("-fx-background-color: #DBFBE2");
         }
-
-
     }
 
     @FXML
     protected void onViewCandidateButton() throws IOException {
         Data.setCurrentCandidateId(candidate.getId());
-        Scenery.getInstance().getCandidateDetailsController().redraw();
         Scenery.getInstance().changeScene(Screen.CANDIDATE_DETAILS);
     }
 

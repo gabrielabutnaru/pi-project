@@ -50,14 +50,12 @@ public class RoleDetailsController {
 
     @FXML
     private void onBackButtonClick() throws IOException, SQLException {
-        //Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     @FXML
     private void onArchiveButtonClick() throws IOException, SQLException {
         Data.archiveRole(Data.getCurrentRoleId());
-        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 

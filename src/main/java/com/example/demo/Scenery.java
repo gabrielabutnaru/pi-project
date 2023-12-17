@@ -9,9 +9,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Pair;
+import model.Data;
 import model.Screen;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Scenery {
     private static Scenery instance;
@@ -128,9 +130,19 @@ public class Scenery {
             this.loginController.redraw();
             this.stage.setScene(this.login);
         } else if (screen == Screen.ACTIVE_ROLES) {
+            try {
+                Data.loadRoles();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             this.activeRolesController.redraw();
             this.stage.setScene(this.activeRoles);
         } else if (screen == Screen.ARCHIVED_ROLES) {
+            try {
+                Data.loadRoles();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             this.archivedRolesController.redraw();
             this.stage.setScene(this.archivedRoles);
         } else if (screen == Screen.NEW_ROLE) {
@@ -140,7 +152,7 @@ public class Scenery {
             this.roleDetailsController.redraw();
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {
-            //this.candidateDetailsController.redraw();
+            this.candidateDetailsController.redraw();
             this.stage.setScene(this.candidateDetails);
         } else if (screen == Screen.SHARE_WITH) {
             //this.shareWithController.redraw();

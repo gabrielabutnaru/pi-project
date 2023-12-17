@@ -24,7 +24,6 @@ public class LoginController {
     @FXML
     private void onLogInButtonClick() throws IOException, SQLException {
         if (Data.isSuccessfullyLoggedIn(usernameField.getText(), passwordField.getText())) {
-            Data.loadRoles();
             Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
         }
     }

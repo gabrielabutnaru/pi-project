@@ -35,7 +35,6 @@ public class ArchivedRolesController {
 
     @FXML
     public void onActiveRolesButtonClick() throws IOException, SQLException {
-        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 

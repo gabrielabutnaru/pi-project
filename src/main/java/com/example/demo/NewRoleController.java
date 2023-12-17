@@ -40,14 +40,12 @@ public class NewRoleController implements Initializable {
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
     @FXML
-    public void onActiveRolesButtonClick() throws IOException, SQLException {
-        Data.loadRoles();
+    public void onActiveRolesButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     @FXML
-    public void onArchivedRolesButtonClick() throws IOException, SQLException {
-        Data.loadRoles();
+    public void onArchivedRolesButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ARCHIVED_ROLES);
     }
 

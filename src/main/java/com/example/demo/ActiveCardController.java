@@ -41,7 +41,6 @@ public class ActiveCardController {
     @FXML
     public void onCardButtonClick() throws IOException {
         Data.setCurrentRoleId(role.getId());
-        Scenery.getInstance().getRoleDetailsController().redraw();
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
