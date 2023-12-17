@@ -58,6 +58,11 @@
                                           <Font name="Roboto Light" size="10.0" />
                                        </font>
                                     </Label>
+                                    <Label fx:id="errorMessageLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="67.0" layoutY="89.0" style="-fx-font-family: Roboto Flex; -fx-font-weight: 400; -fx-text-background-color: #FFCFCF" textAlignment="RIGHT" textFill="RED" wrapText="true">
+                                       <font>
+                                          <Font name="Roboto Light" size="10.0" />
+                                       </font>
+                                    </Label>
                                  </VBox>
                               </children>
                            </VBox>
