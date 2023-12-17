@@ -16,10 +16,11 @@ import model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ActiveRolesController implements Initializable {
+public class ActiveRolesController {
     @FXML
     private Circle myCircle;
 
@@ -30,7 +31,8 @@ public class ActiveRolesController implements Initializable {
     private Label userFullName;
 
     @FXML
-    public void onArchivedRolesButtonClick() throws IOException {
+    public void onArchivedRolesButtonClick() throws IOException, SQLException {
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ARCHIVED_ROLES);
     }
 
@@ -44,9 +46,10 @@ public class ActiveRolesController implements Initializable {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
+    public void redraw() {
+        activeCardLayout.getChildren().clear();
+        myCircle.setFill(new ImagePattern(new Image(Data.getCurrentUser().getAvatar(), false)));
+        this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         try {
             List<Role> activeRoles = Data.roles.stream().filter(Role::isActive).toList();
             for (int i = 0; i < activeRoles.size(); i++) {
@@ -63,10 +66,5 @@ public class ActiveRolesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void drawUserData(User user) {
-        //        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
-        this.userFullName.setText(user.getFirstName() + " " + user.getLastName());
     }
 }

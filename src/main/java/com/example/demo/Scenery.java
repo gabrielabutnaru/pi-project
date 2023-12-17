@@ -125,20 +125,40 @@ public class Scenery {
 
     public void changeScene(Screen screen) {
         if (screen == Screen.LOGIN) {
+            this.loginController.redraw();
             this.stage.setScene(this.login);
         } else if (screen == Screen.ACTIVE_ROLES) {
+            this.activeRolesController.redraw();
             this.stage.setScene(this.activeRoles);
         } else if (screen == Screen.ARCHIVED_ROLES) {
+            this.archivedRolesController.redraw();
             this.stage.setScene(this.archivedRoles);
         } else if (screen == Screen.NEW_ROLE) {
+            this.newRoleController.redraw();
             this.stage.setScene(this.newRole);
         } else if (screen == Screen.ROLE_DETAILS) {
+            //this.roleDetailsController.redraw();
             this.stage.setScene(this.roleDetails);
         } else if (screen == Screen.CANDIDATE_DETAILS) {
+            //this.candidateDetailsController.redraw();
             this.stage.setScene(this.candidateDetails);
         } else if (screen == Screen.SHARE_WITH) {
+            //this.shareWithController.redraw();
             this.stage.setScene(this.shareWith);
         }
+    }
+
+    public LoginController getLoginController() {
+        return this.loginController;
+    }
+    public ActiveRolesController getActiveRolesController() {
+        return this.activeRolesController;
+    }
+    public ArchivedRolesController getArchivedRolesController() {
+        return this.archivedRolesController;
+    }
+    public NewRoleController getNewRoleController() {
+        return this.newRoleController;
     }
 
     public RoleDetailsController getRoleDetailsController() {

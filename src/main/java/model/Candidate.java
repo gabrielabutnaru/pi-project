@@ -22,7 +22,7 @@ public class Candidate {
         this.status = EStatus.DEFAULT;
     }
 
-    public Candidate(int id, String firstName, String lastName, int age, String city, String avatar) {
+    public Candidate(int id, String firstName, String lastName, int age, String city, String avatar, String mail, String phone, EStatus status) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,7 +31,9 @@ public class Candidate {
         this.city = city;
         this.skills = new ArrayList<>();
         this.avatar = avatar;
-        this.status = EStatus.DEFAULT;
+        this.mail = mail;
+        this.phone = phone;
+        this.status = status;
     }
 
     public int getId() {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Role {
+public class Role implements Comparable<Role> {
     private int id;
     private String title;
     private String city;
@@ -15,7 +15,6 @@ public class Role {
     private Boolean isActive;
     private List<Candidate> candidates;
     private List<User> sharedWith;
-    private Status status;
     private User owner;
 
     public Role() {
@@ -24,7 +23,7 @@ public class Role {
         this.sharedWith = new ArrayList<>();
     }
 
-    public Role(int id, String title, String city, LocalDate date, String salaryBudget, Boolean isActive, User owner, Status status) {
+    public Role(int id, String title, String city, LocalDate date, String salaryBudget, Boolean isActive, User owner) {
         this.id = id;
         this.title = title;
         this.city = city;
@@ -34,7 +33,6 @@ public class Role {
         this.isActive = isActive;
         this.candidates = new ArrayList<>();
         this.sharedWith = new ArrayList<>();
-        this.status = status;
         this.owner = owner;
     }
 
@@ -98,14 +96,6 @@ public class Role {
         return sharedWith;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public User getOwner() {
         return owner;
     }
@@ -115,19 +105,8 @@ public class Role {
     }
 
     @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", city='" + city + '\'' +
-                ", date=" + date +
-                ", salaryBudget='" + salaryBudget + '\'' +
-                ", skills=" + skills +
-                ", isActive=" + isActive +
-                ", candidates=" + candidates +
-                ", sharedWith=" + sharedWith +
-                ", status=" + status +
-                ", owner=" + owner +
-                '}';
+    public int compareTo(Role o) {
+        return getDate().compareTo(o.getDate());
     }
+
 }

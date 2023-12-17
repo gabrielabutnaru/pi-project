@@ -16,11 +16,12 @@ import model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ArchivedRolesController implements Initializable {
+public class ArchivedRolesController {
     @FXML
     private VBox archivedCardLayout;
 
@@ -32,7 +33,8 @@ public class ArchivedRolesController implements Initializable {
 
 
     @FXML
-    public void onActiveRolesButtonClick() throws IOException {
+    public void onActiveRolesButtonClick() throws IOException, SQLException {
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
@@ -46,9 +48,10 @@ public class ArchivedRolesController implements Initializable {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
+    public void redraw() {
+        archivedCardLayout.getChildren().clear();
+        myCircle.setFill(new ImagePattern(new Image(Data.getCurrentUser().getAvatar(), false)));
+        this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         try {
             List<Role> archivedRoles = Data.roles.stream().filter(r -> !r.isActive()).toList();
             for (int i = 0; i < archivedRoles.size(); i++) {
@@ -65,10 +68,5 @@ public class ArchivedRolesController implements Initializable {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-    }
-
-    public void drawUserData(User user) {
-        //        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
-        this.userFullName.setText(user.getFirstName() + " " + user.getLastName());
     }
 }

@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -14,29 +15,38 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import model.Data;
 import model.Screen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 
 public class NewRoleController implements Initializable {
     @FXML
     private Circle myCircle;
+
     @FXML
     private TextField skillsField;
+
     @FXML
     private FlowPane skillsContainer;
+
+    @FXML
+    private Label userFullName;
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
     @FXML
-    public void onActiveRolesButtonClick() throws IOException {
+    public void onActiveRolesButtonClick() throws IOException, SQLException {
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
     @FXML
-    public void onArchivedRolesButtonClick() throws IOException {
+    public void onArchivedRolesButtonClick() throws IOException, SQLException {
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ARCHIVED_ROLES);
     }
 
@@ -45,23 +55,19 @@ public class NewRoleController implements Initializable {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        myCircle.setFill(new ImagePattern(new Image("Avatar.png", false)));
-        skills.addListener(new ListChangeListener<String>() {
-            @Override
-            public void onChanged(Change<? extends String> change) {
-                drawChips();
-            }
-        });
-    }
-
     @FXML
     private void onAddSkillButtonClick() {
         if (!Objects.equals(skillsField.getText(), "")) {
             skills.add(skillsField.getText());
             skillsField.setText("");
         }
+    }
+
+
+    public void redraw() {
+        myCircle.setFill(new ImagePattern(new Image(Data.getCurrentUser().getAvatar(), false)));
+        this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
+        skills.clear();
     }
 
     public void drawChips() {
@@ -86,4 +92,13 @@ public class NewRoleController implements Initializable {
             }
         }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        skills.addListener(new ListChangeListener<String>() {
+            @Override
+            public void onChanged(Change<? extends String> change) {
+                drawChips();
+            }
+        });
+    }
 }

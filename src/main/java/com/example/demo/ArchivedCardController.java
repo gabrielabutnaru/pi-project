@@ -64,8 +64,8 @@ public class ArchivedCardController {
         archivedConfirmed.setText(Integer.toString(confirmedCandidatesCount));
         archivedCandidates.setText(Integer.toString(allCandidatesCount));
 
-        int confirmedPercent = confirmedCandidatesCount * 100 / allCandidatesCount;
-        int omittedPercent = omittedCandidatesCount * 100 / allCandidatesCount;
+        int confirmedPercent = allCandidatesCount == 0 ? 0 : confirmedCandidatesCount * 100 / allCandidatesCount;
+        int omittedPercent = allCandidatesCount == 0 ? 0 : omittedCandidatesCount * 100 / allCandidatesCount;
 
         archivedBarConfirmed.setPrefWidth(confirmedPercent * archivedBarCandidates.getPrefWidth() / 100);
         archivedBarOmitted.setPrefWidth(omittedPercent * archivedBarCandidates.getPrefWidth() / 100);

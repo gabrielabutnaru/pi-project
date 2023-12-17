@@ -23,10 +23,14 @@ public class LoginController {
 
     @FXML
     private void onLogInButtonClick() throws IOException, SQLException {
-        if (Data.isUserValid(usernameField.getText(), passwordField.getText())) {
+        if (Data.isSuccessfullyLoggedIn(usernameField.getText(), passwordField.getText())) {
+            Data.loadRoles();
             Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
-            usernameField.setText("");
-            passwordField.setText("");
         }
+    }
+
+    public void redraw() {
+        this.usernameField.setText("");
+        this.passwordField.setText("");
     }
 }

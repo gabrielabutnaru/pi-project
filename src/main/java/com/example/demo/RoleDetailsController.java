@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -57,15 +58,13 @@ public class RoleDetailsController {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
-    /*
-    TODO
-    Nu se loaduie cand trebuie!
-     */
     @FXML
-    private void onArchiveButtonClick() throws IOException {
-        role.setActive(false);
+    private void onArchiveButtonClick() throws IOException, SQLException {
+        Data.archiveRole(role.getId());
+        Data.loadRoles();
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
+
 
     @FXML
     private void onShareButtonClick() throws IOException {

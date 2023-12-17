@@ -65,8 +65,8 @@ public class ActiveCardController {
         cardConfirmed.setText(Integer.toString(confirmedCandidatesCount));
         cardCandidates.setText(Integer.toString(allCandidatesCount));
 
-        int confirmedPercent = confirmedCandidatesCount * 100 / allCandidatesCount;
-        int omittedPercent = omittedCandidatesCount * 100 / allCandidatesCount;
+        int confirmedPercent = allCandidatesCount == 0 ? 0 : confirmedCandidatesCount * 100 / allCandidatesCount;
+        int omittedPercent = allCandidatesCount == 0 ? 0 : omittedCandidatesCount * 100 / allCandidatesCount;
 
         barConfirmed.setPrefWidth(confirmedPercent * barCandidates.getPrefWidth() / 100);
         barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);
