@@ -10,6 +10,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ArchivedCardController {
     @FXML
@@ -70,9 +72,10 @@ public class ArchivedCardController {
         archivedBarConfirmed.setPrefWidth(confirmedPercent * archivedBarCandidates.getPrefWidth() / 100);
         archivedBarOmitted.setPrefWidth(omittedPercent * archivedBarCandidates.getPrefWidth() / 100);
 
-        LocalDate currentDate = LocalDate.now();
-        LocalDate postDate = role.getDate();
-        long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
+        Date currentDate = new Date();
+        Date postDate = role.getDate();
+        long diffInMillies = Math.abs(postDate.getTime() - currentDate.getTime());
+        long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         archivedDate.setText(Long.toString(diffInDays));
     }
 }

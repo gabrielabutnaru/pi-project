@@ -22,7 +22,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -119,9 +121,10 @@ public class RoleDetailsController {
     public void redraw() {
         Role role = Data.getCurrentRole();
 
-        LocalDate currentDate = LocalDate.now();
-        LocalDate postDate = role.getDate();
-        long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
+        Date currentDate = new Date();
+        Date postDate = role.getDate();
+        long diffInMillies = Math.abs(postDate.getTime() - currentDate.getTime());
+        long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         cardDays.setText(Long.toString(diffInDays));
 
         cardTitle.setText(role.getTitle());

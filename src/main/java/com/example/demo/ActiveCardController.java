@@ -10,6 +10,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ActiveCardController {
     @FXML
@@ -68,9 +70,10 @@ public class ActiveCardController {
         barConfirmed.setPrefWidth(confirmedPercent * barCandidates.getPrefWidth() / 100);
         barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);
 
-        LocalDate currentDate = LocalDate.now();
-        LocalDate postDate = role.getDate();
-        long diffInDays = ChronoUnit.DAYS.between(postDate, currentDate);
+        Date currentDate = new Date();
+        Date postDate = role.getDate();
+        long diffInMillies = Math.abs(postDate.getTime() - currentDate.getTime());
+        long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         cardDate.setText(Long.toString(diffInDays));
     }
 }

@@ -18,4 +18,8 @@ public class ChipController {
         chipLabel.setText(s);
         xButton.setOnMouseClicked(onRemove);
     }
+
+    public Label getChipLabel() {
+        return chipLabel;
+    }
 }

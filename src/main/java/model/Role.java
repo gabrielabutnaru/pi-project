@@ -1,6 +1,5 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +8,7 @@ public class Role implements Comparable<Role> {
     private int id;
     private String title;
     private String city;
-    private LocalDate date;
+    private Date date;
     private String salaryBudget;
     private List<String> skills;
     private Boolean isActive;
@@ -23,7 +22,7 @@ public class Role implements Comparable<Role> {
         this.sharedWith = new ArrayList<>();
     }
 
-    public Role(int id, String title, String city, LocalDate date, String salaryBudget, Boolean isActive, User owner) {
+    public Role(int id, String title, String city, Date date, String salaryBudget, Boolean isActive, User owner) {
         this.id = id;
         this.title = title;
         this.city = city;
@@ -60,11 +59,11 @@ public class Role implements Comparable<Role> {
         this.city = city;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -106,7 +105,7 @@ public class Role implements Comparable<Role> {
 
     @Override
     public int compareTo(Role o) {
-        return getDate().compareTo(o.getDate());
+        return Long.compare(this.date.getTime(), o.date.getTime());
     }
 
 }

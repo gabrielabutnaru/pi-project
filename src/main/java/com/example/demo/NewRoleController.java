@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +17,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import model.Candidate;
 import model.Data;
 import model.Screen;
 
@@ -23,10 +25,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class NewRoleController implements Initializable {
     @FXML
     private ImageView userAvatar;
+
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField cityField;
+
+    @FXML
+    private TextField salaryBudgetField;
 
     @FXML
     private TextField skillsField;
@@ -36,6 +48,9 @@ public class NewRoleController implements Initializable {
 
     @FXML
     private Label userFullName;
+
+    @FXML
+    private Slider skillsMatchingPercentageSlider;
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
@@ -62,13 +77,36 @@ public class NewRoleController implements Initializable {
         }
     }
 
+    @FXML
+    private void onCreateNewRoleButton() throws SQLException, IOException {
+        if (skills.isEmpty()) return;
+        Integer newRoleId = Data.addNewRoleToDataBase(this.titleField.getText(), this.cityField.getText(), this.salaryBudgetField.getText(), this.skills.stream().map(String::strip).collect(Collectors.joining(",")));
+        if (newRoleId != null) {
+            List<Candidate> candidates = Data.getAllCandidates();
+            for (Candidate candidate : candidates) {
+                int countSkills = 0;
+                for (String skill : skills) {
+                    if (candidate.getSkills().contains(skill)) countSkills++;
+                }
+                if (countSkills >= skillsMatchingPercentageSlider.getValue()) {
+                    Data.addCandidateToRole(candidate.getId(), newRoleId);
+                }
+            }
+            Data.setCurrentRoleId(newRoleId);
+            Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
+        }
+    }
+
 
     public void redraw() {
         Circle clip = new Circle(32, 32, 32);
         userAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
         userAvatar.setClip(clip);
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
-        skills.clear();
+        this.titleField.setText("");
+        this.cityField.setText("");
+        this.salaryBudgetField.setText("");
+        this.skills.clear();
     }
 
     public void drawChips() {
@@ -99,6 +137,8 @@ public class NewRoleController implements Initializable {
             @Override
             public void onChanged(Change<? extends String> change) {
                 drawChips();
+                skillsMatchingPercentageSlider.setMax(skills.size());
+                skillsMatchingPercentageSlider.setValue(skills.size());
             }
         });
     }

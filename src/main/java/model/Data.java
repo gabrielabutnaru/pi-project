@@ -1,8 +1,10 @@
 package model;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -72,11 +74,11 @@ public class Data {
         while (rs.next()) {
             roles.add(getRoleFromRow(rs));
         }
-        Collections.sort(roles, Collections.reverseOrder());
+        roles.sort(Collections.reverseOrder());
     }
 
     private static Role getRoleFromRow(ResultSet rsRole) throws SQLException {
-        Role role = new Role(rsRole.getInt("id"), rsRole.getString("title"), rsRole.getString("city"), rsRole.getDate("date").toLocalDate(), rsRole.getString("salaryBudget"), rsRole.getBoolean("isActive"), getUser(rsRole.getInt("owner")));
+        Role role = new Role(rsRole.getInt("id"), rsRole.getString("title"), rsRole.getString("city"), rsRole.getTimestamp("date"), rsRole.getString("salaryBudget"), rsRole.getBoolean("isActive"), getUser(rsRole.getInt("owner")));
         role.getSkills().addAll(new ArrayList<>(Arrays.stream(rsRole.getString("skills").split(",")).toList()));
         PreparedStatement psCandidate = connection.prepareStatement("SELECT * FROM candidates LEFT JOIN statuses ON candidates.id = statuses.candidateId HAVING statuses.roleId = " + rsRole.getInt("id"));
         ResultSet rsCandidate = psCandidate.executeQuery();
@@ -148,4 +150,35 @@ public class Data {
     public static void setCurrentCandidateId(int currentCandidateId) {
         Data.currentCandidateId = currentCandidateId;
     }
+
+    public static Integer addNewRoleToDataBase(String title, String city, String salaryBudget, String skills) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO roles (title, isActive, owner, date, city, salaryBudget, skills) VALUES ('" + title + "', '" + 1 + "', '" + currentUser.getId() + "', NOW(), '" + city + "', '" + salaryBudget + "', '" + skills + "');", Statement.RETURN_GENERATED_KEYS);
+        statement.executeUpdate();
+        try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+            else {
+                return null;
+            }
+        }
+    }
+
+    public static List<Candidate> getAllCandidates() throws SQLException {
+        List<Candidate> candidates = new ArrayList<>();
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM candidates");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Candidate c = new Candidate();
+            c.setId(rs.getInt("id"));
+            Arrays.stream(rs.getString("skills").split(",")).forEach(s -> c.getSkills().add(s));
+            candidates.add(c);
+        }
+        return candidates;
+    }
+
+    public static void addCandidateToRole(int candidateId, int roleId) throws SQLException {
+        connection.prepareStatement("INSERT INTO statuses(type, candidateId, roleId) VALUES ('DEFAULT', '" + candidateId + "', '" + roleId + "')").executeUpdate();
+    }
 }
+
