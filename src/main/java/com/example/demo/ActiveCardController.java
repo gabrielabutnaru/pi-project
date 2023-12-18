@@ -4,14 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import model.*;
+import org.apache.commons.codec.binary.StringUtils;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class ActiveCardController {
     @FXML
@@ -38,6 +43,10 @@ public class ActiveCardController {
     private HBox barConfirmed;
     @FXML
     private HBox barOmitted;
+    @FXML
+    private Label sharedWithLabel;
+    @FXML
+    private HBox sharedWithButton;
     private Role role;
 
     @FXML
@@ -46,8 +55,14 @@ public class ActiveCardController {
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
-    public void drawData(Role role) {
+    public void drawData(Role role) throws SQLException {
         this.role = role;
+
+        String sharedWith = String.join("\n", Data.getRoleSharedWithUsers(role.getId()).stream().map(user -> user.getFirstName() + " " + user.getLastName()).collect(Collectors.toCollection(ArrayList<String>::new)));
+        if (sharedWith.equals("")) {
+            sharedWithButton.setVisible(false);
+        }
+        sharedWithLabel.getTooltip().setText(sharedWith);
 
         cardOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
         cardTitle.setText(role.getTitle());
@@ -56,16 +71,16 @@ public class ActiveCardController {
         cardSkills.setText(String.join(", ", role.getSkills()));
         cardSalaryBudget.setText(role.getSalaryBudget());
 
-        int omittedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.OMITTED || c.getStatus() == EStatus.FAILED).count();
-        int confirmedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.IN_TOUCH || c.getStatus() == EStatus.EMPLOYED).count();
+        int rejectedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.OMITTED || c.getStatus() == EStatus.FAILED).count();
+        int reviewedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() != EStatus.DEFAULT).count();
         int allCandidatesCount = role.getCandidates().size();
 
-        cardOmitted.setText(Integer.toString(omittedCandidatesCount));
-        cardConfirmed.setText(Integer.toString(confirmedCandidatesCount));
+        cardOmitted.setText(Integer.toString(rejectedCandidatesCount));
+        cardConfirmed.setText(Integer.toString(reviewedCandidatesCount));
         cardCandidates.setText(Integer.toString(allCandidatesCount));
 
-        int confirmedPercent = allCandidatesCount == 0 ? 0 : confirmedCandidatesCount * 100 / allCandidatesCount;
-        int omittedPercent = allCandidatesCount == 0 ? 0 : omittedCandidatesCount * 100 / allCandidatesCount;
+        int confirmedPercent = allCandidatesCount == 0 ? 0 : reviewedCandidatesCount * 100 / allCandidatesCount;
+        int omittedPercent = allCandidatesCount == 0 ? 0 : rejectedCandidatesCount * 100 / allCandidatesCount;
 
         barConfirmed.setPrefWidth(confirmedPercent * barCandidates.getPrefWidth() / 100);
         barOmitted.setPrefWidth(omittedPercent * barCandidates.getPrefWidth() / 100);

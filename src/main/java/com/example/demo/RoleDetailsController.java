@@ -58,6 +58,12 @@ public class RoleDetailsController {
     private FlowPane skillsScroll;
 
     @FXML
+    private HBox shareRoleButton;
+
+    @FXML
+    private HBox archiveButton;
+
+    @FXML
     private void onBackButtonClick() throws IOException, SQLException {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
@@ -114,7 +120,6 @@ public class RoleDetailsController {
 
     @FXML
     private void onShareButtonClick() throws IOException {
-        //Scenery.getInstance().getShareWithController().drawData();
         Scenery.getInstance().changeScene(Screen.SHARE_WITH);
     }
 
@@ -156,6 +161,8 @@ public class RoleDetailsController {
             skillsScroll.getChildren().add(chip);
 
         });
+        shareRoleButton.setVisible(role.getOwner().getId() == Data.getCurrentUser().getId());
+        archiveButton.setVisible(role.getOwner().getId() == Data.getCurrentUser().getId());
 
         candidatesCardLayout.getChildren().clear();
         role.getCandidates().forEach(c -> {

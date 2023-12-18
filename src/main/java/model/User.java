@@ -13,6 +13,10 @@ public class User {
         this.avatar = avatar;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -39,5 +43,9 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

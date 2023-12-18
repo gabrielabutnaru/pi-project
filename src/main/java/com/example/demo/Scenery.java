@@ -160,28 +160,9 @@ public class Scenery {
             this.candidateDetailsController.redraw();
             this.stage.setScene(this.candidateDetails);
         } else if (screen == Screen.SHARE_WITH) {
-            //this.shareWithController.redraw();
+            this.shareWithController.redraw();
             this.stage.setScene(this.shareWith);
         }
     }
 
-    public LoginController getLoginController() {
-        return this.loginController;
-    }
-    public ActiveRolesController getActiveRolesController() {
-        return this.activeRolesController;
-    }
-    public ArchivedRolesController getArchivedRolesController() {
-        return this.archivedRolesController;
-    }
-    public NewRoleController getNewRoleController() {
-        return this.newRoleController;
-    }
-
-    public RoleDetailsController getRoleDetailsController() {
-        return this.roleDetailsController;
-    }
-    public CandidateDetailsController getCandidateDetailsController() {
-        return this.candidateDetailsController;
-    }
 }

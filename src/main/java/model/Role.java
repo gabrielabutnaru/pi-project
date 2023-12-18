@@ -13,7 +13,7 @@ public class Role implements Comparable<Role> {
     private List<String> skills;
     private Boolean isActive;
     private List<Candidate> candidates;
-    private List<User> sharedWith;
+    private List<Integer> sharedWith;
     private User owner;
 
     public Role() {
@@ -91,7 +91,7 @@ public class Role implements Comparable<Role> {
         return candidates;
     }
 
-    public List<User> getSharedWith() {
+    public List<Integer> getSharedWith() {
         return sharedWith;
     }
 

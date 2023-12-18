@@ -124,103 +124,112 @@
                         <Font name="Inter Semi Bold" size="32.0" />
                      </font>
                   </Label>
-                  <HBox prefWidth="200.0">
+                  <VBox VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                        <HBox prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <VBox spacing="4.0">
+                              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Title">
-                                       <font>
-                                          <Font name="Roboto Flex Regular" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="titleField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor></TextField>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0" spacing="4.0">
-                                 <children>
-                                    <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="City">
-                                       <font>
-                                          <Font name="Roboto Flex Regular" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="cityField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor></TextField>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="66.0" prefWidth="100.0" spacing="4.0">
-                                 <children>
-                                    <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Salary Budget">
-                                       <font>
-                                          <Font name="Roboto Flex Regular" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="salaryBudgetField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor></TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                           </padding>
-                        </VBox>
-                        <VBox HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox spacing="8.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <VBox spacing="4.0">
+                                    <VBox spacing="4.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Skills">
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Title">
                                              <font>
                                                 <Font name="Roboto Flex Regular" size="16.0" />
                                              </font>
                                           </Label>
-                                          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" spacing="4.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2;">
-                                             <children>
-                                                <TextField fx:id="skillsField" style="-fx-background-color: transparent; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
-                                                   <cursor>
-                                                      <Cursor fx:constant="TEXT" />
-                                                   </cursor></TextField>
-                                                <HBox fx:id="addSkillButton" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onAddSkillButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: #CBD2E0; -fx-shape: &quot;M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z&quot;;">
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </HBox>
-                                             </children>
-                                             <padding>
-                                                <Insets bottom="4.0" right="4.0" top="4.0" />
-                                             </padding>
-                                          </HBox>
+                                          <TextField fx:id="titleField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
                                        </children>
                                     </VBox>
-                                    <FlowPane fx:id="skillsContainer" hgap="8.0" prefHeight="200.0" prefWidth="200.0" vgap="4.0" />
-                                    <Label text="Skills Matching Percentage" textFill="#121212">
-                                       <font>
-                                          <Font name="Roboto Flex Regular" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Slider fx:id="skillsMatchingPercentageSlider" blockIncrement="1.0" majorTickUnit="2.0" max="1.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                                    <VBox layoutX="10.0" layoutY="10.0" spacing="4.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="City">
+                                             <font>
+                                                <Font name="Roboto Flex Regular" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cityField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="66.0" prefWidth="100.0" spacing="4.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Salary Budget">
+                                             <font>
+                                                <Font name="Roboto Flex Regular" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="salaryBudgetField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2; -fx-background-color: transparent;">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
                                  </children>
                                  <padding>
-                                    <Insets bottom="70.0" />
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox spacing="4.0">
+                                             <children>
+                                                <Label maxWidth="1.7976931348623157E308" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #121212" text="Skills">
+                                                   <font>
+                                                      <Font name="Roboto Flex Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="288.0" spacing="4.0" style="-fx-border-radius: 6; -fx-border-color: #CBD2E0; -fx-background-radius: 6; -fx-border-width: 2;">
+                                                   <children>
+                                                      <TextField fx:id="skillsField" style="-fx-background-color: transparent; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
+                                                         <cursor>
+                                                            <Cursor fx:constant="TEXT" />
+                                                         </cursor>
+                                                      </TextField>
+                                                      <HBox fx:id="addSkillButton" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onAddSkillButtonClick" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: #CBD2E0; -fx-shape: &quot;M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z&quot;;">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </HBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="4.0" right="4.0" top="4.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <FlowPane fx:id="skillsContainer" hgap="8.0" prefHeight="126.0" prefWidth="200.0" vgap="4.0" />
+                                          <VBox spacing="4.0">
+                                             <children>
+                                                <Label text="Minimum Skills Required">
+                                                   <font>
+                                                      <Font name="Roboto Flex Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Slider fx:id="skillsMatchingPercentageSlider" blockIncrement="1.0" majorTickUnit="2.0" max="1.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </padding>
                               </VBox>
                            </children>
-                           <padding>
-                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                           </padding>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <VBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                  </VBox>
+                  <VBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
                      <children>
                         <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#onCreateNewRoleButton" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
                            <children>

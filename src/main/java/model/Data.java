@@ -1,10 +1,7 @@
 package model;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.Date;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -80,6 +77,7 @@ public class Data {
     private static Role getRoleFromRow(ResultSet rsRole) throws SQLException {
         Role role = new Role(rsRole.getInt("id"), rsRole.getString("title"), rsRole.getString("city"), rsRole.getTimestamp("date"), rsRole.getString("salaryBudget"), rsRole.getBoolean("isActive"), getUser(rsRole.getInt("owner")));
         role.getSkills().addAll(new ArrayList<>(Arrays.stream(rsRole.getString("skills").split(",")).toList()));
+        //role.getSharedWith().addAll(getUsersWithoutCurrent().stream().filter(r -> r.getId() == role.getId()).collect(Collectors.toCollection()));
         PreparedStatement psCandidate = connection.prepareStatement("SELECT * FROM candidates LEFT JOIN statuses ON candidates.id = statuses.candidateId HAVING statuses.roleId = " + rsRole.getInt("id"));
         ResultSet rsCandidate = psCandidate.executeQuery();
         while (rsCandidate.next()) {
@@ -179,6 +177,48 @@ public class Data {
 
     public static void addCandidateToRole(int candidateId, int roleId) throws SQLException {
         connection.prepareStatement("INSERT INTO statuses(type, candidateId, roleId) VALUES ('DEFAULT', '" + candidateId + "', '" + roleId + "')").executeUpdate();
+    }
+
+    public static void shareRoleToUser(int roleId, int userId) throws SQLException {
+        connection.prepareStatement("INSERT INTO users_roles(userId, roleId) VALUES ('" + userId + "', '" + roleId + "')").executeUpdate();
+    }
+
+    public static List<User> getUsersWithoutCurrent() throws SQLException {
+        List<User> users = new ArrayList<>();
+        PreparedStatement ps = connection.prepareStatement("SELECT id, firstName, lastName, avatar FROM users WHERE id != " + currentUser.getId());
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setFirstName(rs.getString("firstName"));
+            user.setLastName(rs.getString("lastName"));
+            user.setAvatar(rs.getString("avatar"));
+            users.add(user);
+        }
+        return users;
+    }
+
+    public static Boolean isRoleSharedWithUser(int roleId, int userId) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users_roles WHERE userId = '" + userId + "' AND roleId = '" + roleId + "'");
+        ResultSet rs = ps.executeQuery();
+        return rs.isBeforeFirst();
+    }
+
+    public static void unshareRoleWithUser(int roleId, int userId) throws SQLException {
+        connection.prepareStatement("DELETE FROM users_roles WHERE userId = " + userId + " AND roleId = " + roleId).executeUpdate();
+    }
+
+    public static List<User> getRoleSharedWithUsers(int roleId) throws SQLException {
+        List<User> users = new ArrayList<>();
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users LEFT JOIN users_roles ON users.id = users_roles.userId HAVING users_roles.roleId = " + roleId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            User user = new User();
+            user.setFirstName(rs.getString("firstName"));
+            user.setLastName(rs.getString("lastName"));
+            users.add(user);
+        }
+        return users;
     }
 }
 

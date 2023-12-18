@@ -198,6 +198,17 @@
                         </Label>
                         <HBox alignment="CENTER_RIGHT" spacing="8.0" HBox.hgrow="ALWAYS">
                            <children>
+                              <HBox fx:id="shareRoleButton" alignment="CENTER" layoutX="198.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onShareButtonClick" spacing="10.0" style="-fx-background-color: #20399E; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="Share role" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
                               <HBox fx:id="archiveButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #FFCFCF; -fx-background-radius: 20;">
                                  <children>
                                     <Label alignment="CENTER" onMouseClicked="#onArchiveButtonClick" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #D00000" text="Archive Role" />
@@ -212,17 +223,6 @@
                               <HBox fx:id="exportCSVButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onExportToCSVButtonClick" spacing="10.0" style="-fx-background-color: #1D7B32; -fx-background-radius: 20;">
                                  <children>
                                     <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="Export CSV" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />
-                                 </padding>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </HBox>
-                              <HBox fx:id="shareRoleButton" alignment="CENTER" layoutX="198.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onShareButtonClick" spacing="10.0" style="-fx-background-color: #20399E; -fx-background-radius: 20;">
-                                 <children>
-                                    <Label alignment="CENTER" style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="Share role" />
                                  </children>
                                  <padding>
                                     <Insets bottom="4.0" left="6.0" right="6.0" top="4.0" />

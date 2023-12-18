@@ -28,14 +28,14 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></HBox>
-                        <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Share with" >
+                        <Label style="-fx-font-family: Roboto Flex; -fx-font-weight: 700; -fx-text-background-color: #121212" text="Share with">
                            <font>
                               <Font name="Roboto Flex Regular" size="20.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <ScrollPane stylesheets="@../../../style.css" VBox.vgrow="ALWAYS">
+                  <ScrollPane hbarPolicy="NEVER" stylesheets="@../../../style.css" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox fx:id="userCardsLayout" />
                      </content>
@@ -48,25 +48,7 @@
                         <String fx:value="scroll-pane" />
                      </styleClass>
                   </ScrollPane>
-                  <HBox alignment="CENTER_RIGHT">
-                     <children>
-                        <HBox fx:id="shareButton" alignment="CENTER" maxWidth="-Infinity" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
-                           <children>
-                              <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #FFFFFF" text="Share">
-                                 <font>
-                                    <Font name="Roboto Flex Regular" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </padding>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </HBox>
-                     </children>
-                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" />
                </children>
             </VBox>
          </children>

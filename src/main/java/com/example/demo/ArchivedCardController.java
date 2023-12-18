@@ -58,16 +58,16 @@ public class ArchivedCardController {
         archivedSkills.setText(String.join(", ", role.getSkills()));
         archivedSalaryBudget.setText(role.getSalaryBudget());
 
-        int omittedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.OMITTED || c.getStatus() == EStatus.FAILED).count();
-        int confirmedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.IN_TOUCH || c.getStatus() == EStatus.EMPLOYED).count();
+        int rejectedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() == EStatus.OMITTED || c.getStatus() == EStatus.FAILED).count();
+        int reviewedCandidatesCount = (int) role.getCandidates().stream().filter(c -> c.getStatus() != EStatus.DEFAULT).count();
         int allCandidatesCount = role.getCandidates().size();
 
-        archivedOmitted.setText(Integer.toString(omittedCandidatesCount));
-        archivedConfirmed.setText(Integer.toString(confirmedCandidatesCount));
+        archivedOmitted.setText(Integer.toString(rejectedCandidatesCount));
+        archivedConfirmed.setText(Integer.toString(reviewedCandidatesCount));
         archivedCandidates.setText(Integer.toString(allCandidatesCount));
 
-        int confirmedPercent = allCandidatesCount == 0 ? 0 : confirmedCandidatesCount * 100 / allCandidatesCount;
-        int omittedPercent = allCandidatesCount == 0 ? 0 : omittedCandidatesCount * 100 / allCandidatesCount;
+        int confirmedPercent = allCandidatesCount == 0 ? 0 : reviewedCandidatesCount * 100 / allCandidatesCount;
+        int omittedPercent = allCandidatesCount == 0 ? 0 : rejectedCandidatesCount * 100 / allCandidatesCount;
 
         archivedBarConfirmed.setPrefWidth(confirmedPercent * archivedBarCandidates.getPrefWidth() / 100);
         archivedBarOmitted.setPrefWidth(omittedPercent * archivedBarCandidates.getPrefWidth() / 100);

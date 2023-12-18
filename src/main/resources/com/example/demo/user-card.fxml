@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="341.0" spacing="8.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.UserCardController">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="341.0" spacing="8.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.UserCardController">
    <children>
-      <CheckBox fx:id="checkbox" mnemonicParsing="false">
+      <HBox alignment="CENTER_LEFT" spacing="8.0" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="userAvatar" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="userName" text="Andreea Popescu">
+               <font>
+                  <Font name="Roboto Flex Regular" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="shareButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onShareButtonClick" spacing="4.0" style="-fx-background-color: #213BA2; -fx-background-radius: 12;">
+         <children>
+            <Label fx:id="shareButtonLabel" style="-fx-text-background-color: #FFFFFF" text="Share">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+         </padding>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></CheckBox>
-      <Circle fx:id="userAvatar" fill="DODGERBLUE" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label fx:id="userName" text="Andreea Popescu">
-         <font>
-            <Font name="Roboto Flex Regular" size="14.0" />
-         </font>
-      </Label>
+         </cursor>
+      </HBox>
    </children>
+   <padding>
+      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+   </padding>
 </HBox>
