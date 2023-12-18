@@ -35,10 +35,19 @@ public class NewRoleController implements Initializable {
     private TextField titleField;
 
     @FXML
+    private Label titleErrorMessageLabel;
+
+    @FXML
     private TextField cityField;
 
     @FXML
+    private Label cityErrorMessageLabel;
+
+    @FXML
     private TextField salaryBudgetField;
+
+    @FXML
+    private Label salaryBudgetErrorMessageLabel;
 
     @FXML
     private TextField skillsField;
@@ -51,6 +60,9 @@ public class NewRoleController implements Initializable {
 
     @FXML
     private Slider skillsMatchingPercentageSlider;
+
+    @FXML
+    private Label skillsErrorMessageLabel;
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
@@ -79,7 +91,32 @@ public class NewRoleController implements Initializable {
 
     @FXML
     private void onCreateNewRoleButton() throws SQLException, IOException {
-        if (skills.isEmpty()) return;
+        Boolean hasError = false;
+        if (skills.isEmpty()) {
+            skillsErrorMessageLabel.setVisible(true);
+            hasError = true;
+        } else {
+            skillsErrorMessageLabel.setVisible(false);
+        }
+        if (cityField.getText().equals("")) {
+            cityErrorMessageLabel.setVisible(true);
+            hasError = true;
+        } else {
+            cityErrorMessageLabel.setVisible(false);
+        }
+        if (titleField.getText().equals("")) {
+            titleErrorMessageLabel.setVisible(true);
+            hasError = true;
+        } else {
+            titleErrorMessageLabel.setVisible(false);
+        }
+        if (salaryBudgetField.getText().equals("")) {
+            salaryBudgetErrorMessageLabel.setVisible(true);
+            hasError = true;
+        } else {
+            salaryBudgetErrorMessageLabel.setVisible(false);
+        }
+        if (hasError) return;
         Integer newRoleId = Data.addNewRoleToDataBase(this.titleField.getText(), this.cityField.getText(), this.salaryBudgetField.getText(), this.skills.stream().map(String::strip).collect(Collectors.joining(",")));
         if (newRoleId != null) {
             List<Candidate> candidates = Data.getAllCandidates();
@@ -104,9 +141,13 @@ public class NewRoleController implements Initializable {
         userAvatar.setClip(clip);
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         this.titleField.setText("");
+        this.titleErrorMessageLabel.setVisible(false);
         this.cityField.setText("");
+        this.cityErrorMessageLabel.setVisible(false);
         this.salaryBudgetField.setText("");
+        this.salaryBudgetErrorMessageLabel.setVisible(false);
         this.skills.clear();
+        this.skillsErrorMessageLabel.setVisible(false);
     }
 
     public void drawChips() {
