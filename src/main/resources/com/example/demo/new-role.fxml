@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -211,7 +212,19 @@
                                              </children>
                                           </VBox>
                                           <Label fx:id="skillsErrorMessageLabel" style="-fx-text-background-color: red" text="You have to set at least one skill." visible="false" />
-                                          <FlowPane fx:id="skillsContainer" hgap="8.0" prefHeight="126.0" prefWidth="200.0" vgap="4.0" />
+                                          <ScrollPane hbarPolicy="NEVER" stylesheets="@../../../style.css">
+                                             <content>
+                                                <FlowPane fx:id="skillsContainer" hgap="8.0" maxWidth="-Infinity" prefHeight="126.0" prefWidth="293.0" vgap="4.0" />
+                                             </content>
+                                             <styleClass>
+                                                <String fx:value="decrement-arrow" />
+                                                <String fx:value="decrement-button" />
+                                                <String fx:value="increment-arrow" />
+                                                <String fx:value="increment-button" />
+                                                <String fx:value="scroll-bar" />
+                                                <String fx:value="scroll-pane" />
+                                             </styleClass>
+                                          </ScrollPane>
                                           <VBox spacing="4.0">
                                              <children>
                                                 <Label text="Minimum Skills Required">
