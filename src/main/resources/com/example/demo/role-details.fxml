@@ -68,7 +68,7 @@
                                                 <Font name="Roboto Flex Regular" size="10.0" />
                                              </font>
                                           </Label>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="Omitted">
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="Rejected">
                                              <font>
                                                 <Font name="Roboto Flex Regular" size="10.0" />
                                              </font>
@@ -85,7 +85,7 @@
                                                 <Font name="Roboto Flex Regular" size="10.0" />
                                              </font>
                                           </Label>
-                                          <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="Confirmed">
+                                          <Label style="-fx-font-family: Roboto Flex; -fx-text-background-color: #777777" text="Reviewed">
                                              <font>
                                                 <Font name="Roboto Flex Regular" size="10.0" />
                                              </font>
