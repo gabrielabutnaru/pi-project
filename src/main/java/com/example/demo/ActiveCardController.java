@@ -4,20 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import model.*;
-import org.apache.commons.codec.binary.StringUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+/**
+ * The controller for the active card component.
+ */
 public class ActiveCardController {
     @FXML
     private Label cardCity;
@@ -49,17 +46,25 @@ public class ActiveCardController {
     private HBox sharedWithButton;
     private Role role;
 
+    /**
+     * Function that runs when the card is pressed.
+     * Used to navigate to role details screen.
+     */
     @FXML
     public void onCardButtonClick() throws IOException {
         Data.setCurrentRoleId(role.getId());
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
+    /**
+     * Function that draws a given role on the screen based on the active card component.
+     * @param role given role
+     */
     public void drawData(Role role) throws SQLException {
         this.role = role;
 
         String sharedWith = String.join("\n", Data.getRoleSharedWithUsers(role.getId()).stream().map(user -> user.getFirstName() + " " + user.getLastName()).collect(Collectors.toCollection(ArrayList<String>::new)));
-        if (sharedWith.equals("")) {
+        if (sharedWith.isEmpty()) {
             sharedWithButton.setVisible(false);
         }
         sharedWithLabel.getTooltip().setText(sharedWith);

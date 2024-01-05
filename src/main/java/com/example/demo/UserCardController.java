@@ -1,20 +1,20 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Data;
 import model.Role;
 import model.User;
 
 import java.sql.SQLException;
-import java.util.Objects;
 
+/**
+ * The controller for the user card component.
+ */
 public class UserCardController {
 
     @FXML
@@ -35,6 +35,10 @@ public class UserCardController {
         this.user = user;
     }
 
+    /**
+     * Function that runs when the share button is clicked.
+     * Used to (un)share the current role to the given user.
+     */
     @FXML
     private void onShareButtonClick() throws SQLException {
         Role role = Data.getCurrentRole();
@@ -47,6 +51,9 @@ public class UserCardController {
         }
     }
 
+    /**
+     * Function that updates the component state.
+     */
     public void redraw() throws SQLException {
         Role role = Data.getCurrentRole();
         if (Data.isRoleSharedWithUser(role.getId(), user.getId())) {

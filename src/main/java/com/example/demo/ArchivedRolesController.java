@@ -2,26 +2,23 @@ package com.example.demo;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Data;
 import model.Role;
 import model.Screen;
-import model.User;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
-import java.util.ResourceBundle;
 
+/**
+ * The controller for the archived roles screen.
+ */
 public class ArchivedRolesController {
     @FXML
     private VBox archivedCardLayout;
@@ -32,22 +29,34 @@ public class ArchivedRolesController {
     @FXML
     private Label userFullName;
 
-
+    /**
+     * Function that runs when the active roles button is clicked.
+     * Used to navigate to the active roles screen.
+     */
     @FXML
-    public void onActiveRolesButtonClick() throws IOException, SQLException {
+    public void onActiveRolesButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
-
+    /**
+     * Function that runs when the new role button is clicked.
+     * Used to navigate to the new role screen.
+     */
     @FXML
     public void onNewRoleButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.NEW_ROLE);
     }
-
+    /**
+     * Function that runs when the logout button is clicked.
+     * Used to log out the user.
+     */
     @FXML
     private void onLogOutButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 
+    /**
+     * Function that updates the screen state.
+     */
     public void redraw() {
         archivedCardLayout.getChildren().clear();
         Circle clip = new Circle(32, 32, 32);

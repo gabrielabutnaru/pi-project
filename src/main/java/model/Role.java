@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Class containing data regarding a specific Role.
+ */
 public class Role implements Comparable<Role> {
     private int id;
     private String title;
@@ -16,12 +19,24 @@ public class Role implements Comparable<Role> {
     private List<Integer> sharedWith;
     private User owner;
 
+    /**
+     * Default constructor, initializing the containers used within the class.
+     */
     public Role() {
         this.skills = new ArrayList<>();
         this.candidates = new ArrayList<>();
         this.sharedWith = new ArrayList<>();
     }
 
+    /**
+     * @param id of the role
+     * @param title of the role
+     * @param city where the role takes place in
+     * @param date when the role was created
+     * @param salaryBudget for the role
+     * @param isActive true if role is active (actively looking for candidates), false if it is archived
+     * @param owner the user that created the role
+     */
     public Role(int id, String title, String city, Date date, String salaryBudget, Boolean isActive, User owner) {
         this.id = id;
         this.title = title;

@@ -7,12 +7,12 @@ import model.EStatus;
 import model.Role;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The controller for the active card component.
+ */
 public class ArchivedCardController {
     @FXML
     private Label archivedCity;
@@ -50,6 +50,10 @@ public class ArchivedCardController {
     @FXML
     private HBox archivedBarOmitted;
 
+    /**
+     * Function that draws a given role on the screen based on the archived card component.
+     * @param role given role
+     */
     public void setData (Role role) throws ParseException {
         archivedOwner.setText(role.getOwner().getFirstName() + " " + role.getOwner().getLastName());
         archivedTitle.setText(role.getTitle());

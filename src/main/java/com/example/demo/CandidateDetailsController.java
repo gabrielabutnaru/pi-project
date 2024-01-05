@@ -6,13 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import model.Candidate;
 import model.Data;
 import model.EStatus;
@@ -21,6 +17,9 @@ import model.Screen;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * The controller for the candidate details screen.
+ */
 public class CandidateDetailsController {
     @FXML
     private Label candidateAge;
@@ -50,40 +49,61 @@ public class CandidateDetailsController {
     private Label candidateStatus;
 
 
+    /**
+     * Function that runs when the back button is clicked.
+     * Used to navigate back to the role details screen.
+     */
     @FXML
-    void onBackButtonClick(MouseEvent event) throws IOException, SQLException {
+    void onBackButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
+    /**
+     * Function that runs when the omit button is clicked.
+     * Used to set the status of the candidate to `omitted`.
+     */
     @FXML
-    void onOmitButtonClick(MouseEvent event) throws SQLException {
+    void onOmitButtonClick() throws SQLException {
         Data.setCandidateStatus(EStatus.OMITTED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
         Data.loadRoles();
         redraw();
     }
 
+    /**
+     * Function that runs when the fail button is clicked.
+     * Used to set the status of the candidate to failed.
+     */
     @FXML
-    void onFailButtonClick(MouseEvent event) throws SQLException {
+    void onFailButtonClick() throws SQLException {
         Data.setCandidateStatus(EStatus.FAILED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
         Data.loadRoles();
         redraw();
     }
 
+    /**
+     * Function that runs when the `in touch` button is clicked.
+     * Used to set the status of the candidate to `in touch`.
+     */
     @FXML
-    void onInTouchButtonClick(MouseEvent event) throws SQLException {
+    void onInTouchButtonClick() throws SQLException {
         Data.setCandidateStatus(EStatus.IN_TOUCH, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
         Data.loadRoles();
         redraw();
     }
-
+    /**
+     * Function that runs when the confirm button is clicked.
+     * Used to set the status of the candidate to confirmed.
+     */
     @FXML
-    void onConfirmedButtonClick(MouseEvent event) throws SQLException {
+    void onConfirmedButtonClick() throws SQLException {
         Data.setCandidateStatus(EStatus.EMPLOYED, Data.getCurrentCandidateId(), Data.getCurrentRoleId());
         Data.loadRoles();
         redraw();
     }
 
-
+    /**
+     * Function that updates the screen state.
+     */
     public void redraw() {
         Candidate c = Data.getCurrentCandidate() ;
         candidateAge.setText(Integer.toString(c.getAge()));

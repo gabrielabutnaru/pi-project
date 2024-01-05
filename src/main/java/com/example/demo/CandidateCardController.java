@@ -1,29 +1,22 @@
 package com.example.demo;
 
-import javafx.collections.ListChangeListener;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
+
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.*;
 
 import java.io.IOException;
-import java.net.URL;
 import java.text.ParseException;
-import java.util.ResourceBundle;
 
+/**
+ * The controller for the candidate card component.
+ */
 public class CandidateCardController {
     @FXML
     private ImageView candidateAvatar;
@@ -42,6 +35,10 @@ public class CandidateCardController {
 
     private Candidate candidate;
 
+    /**
+     * Function that draws a given candidate on the screen based on the candidate card component.
+     * @param candidate given candidate
+     */
     public void drawData(Candidate candidate) throws ParseException {
         this.candidate = candidate;
 
@@ -68,6 +65,10 @@ public class CandidateCardController {
         }
     }
 
+    /**
+     * Function that runs when the card is pressed.
+     * Used to navigate to candidate details screen.
+     */
     @FXML
     protected void onViewCandidateButton() throws IOException {
         Data.setCurrentCandidateId(candidate.getId());

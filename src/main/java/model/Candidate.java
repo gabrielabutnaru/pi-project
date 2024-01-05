@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class corresponding to the candidate.
+ */
 public class Candidate {
     private int id;
     private String firstName;
@@ -16,12 +19,28 @@ public class Candidate {
     private String phone;
     private String mail;
 
+
+    /**
+     * The default constructor of the Candidate class.
+     */
     public Candidate() {
         this.jobs = new ArrayList<>();
         this.skills = new ArrayList<>();
         this.status = EStatus.DEFAULT;
     }
 
+    /**
+     * The complete constructor of the Candidate class.
+     * @param id of the candidate
+     * @param firstName of the candidate
+     * @param lastName of the candidate
+     * @param age of the candidate
+     * @param city in which the candidate lives in
+     * @param avatar url to the candidate's avatar picture
+     * @param mail of the candidate
+     * @param phone number of the candidate
+     * @param status of the candidate
+     */
     public Candidate(int id, String firstName, String lastName, int age, String city, String avatar, String mail, String phone, EStatus status) {
         this.id = id;
         this.firstName = firstName;

@@ -13,15 +13,26 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The controller for the share with screen.
+ */
 public class ShareWithController {
     @FXML
     private VBox userCardsLayout;
 
+
+    /**
+     * Function that runs when the back button is clicked.
+     * Used to navigate back to the active roles screen.
+     */
     @FXML
     private void onBackButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ROLE_DETAILS);
     }
 
+    /**
+     * Function that updates the screen state.
+     */
     public void redraw() {
         userCardsLayout.getChildren().clear();
         try {

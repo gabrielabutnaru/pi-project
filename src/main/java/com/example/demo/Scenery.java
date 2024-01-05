@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +14,9 @@ import model.Screen;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * The scenery controller.
+ */
 public class Scenery {
     private static Scenery instance;
 
@@ -44,6 +46,9 @@ public class Scenery {
     private final Scene shareWith;
     private final ShareWithController shareWithController;
 
+    /**
+     * The constructor of the Scenery class.
+     */
     private Scenery() throws IOException {
         this.stage = new Stage();
 
@@ -81,6 +86,10 @@ public class Scenery {
         stage.setScene(this.login);
     }
 
+    /**
+     * @param resourceUrl url to the fxml file
+     * @return a pair between a scene and its FXMLLoader
+     */
     private Pair<Scene, FXMLLoader> createScene(String resourceUrl) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resourceUrl));
         ToolBar toolBar = createToolbar();
@@ -98,11 +107,20 @@ public class Scenery {
         return new Pair<>(scene, fxmlLoader);
     }
 
+    /**
+     * Function that creates the toolbar.
+     * @return toolbar component
+     */
     private ToolBar createToolbar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toolbar.fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     * @param fxmlLoader of the component
+     * @param toolBar -
+     * @return a borderpane representing the scene's contents
+     */
     private BorderPane createBorderPane(FXMLLoader fxmlLoader, ToolBar toolBar) {
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(toolBar);
@@ -116,6 +134,9 @@ public class Scenery {
         return borderPane;
     }
 
+    /**
+     * @return the instance
+     */
     public static Scenery getInstance() throws IOException {
         if (instance == null) instance = new Scenery();
         return instance;
@@ -125,6 +146,10 @@ public class Scenery {
         return this.stage;
     }
 
+    /**
+     * Function used to change between scenes.
+     * @param screen LOGIN, ACTIVE_ROLES, ARCHIVED_ROLES, NEW_ROLE, ROLE_DETAILS, CANDIDATE_DETAILS, SHARE_WITH
+     */
     public void changeScene(Screen screen) {
         if (screen == Screen.LOGIN) {
             this.loginController.redraw();

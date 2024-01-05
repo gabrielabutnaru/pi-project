@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Enum for app's screens.
+ */
 public enum Screen {
     LOGIN,
     ACTIVE_ROLES,

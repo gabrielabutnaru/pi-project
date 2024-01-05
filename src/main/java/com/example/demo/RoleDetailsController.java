@@ -8,19 +8,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import model.*;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +23,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
+/**
+ * The controller for the role details screen.
+ */
 public class RoleDetailsController {
     @FXML
     private VBox candidatesCardLayout;
@@ -63,17 +60,31 @@ public class RoleDetailsController {
     @FXML
     private HBox archiveButton;
 
+
+    /**
+     * Function that runs when the back button is clicked.
+     * Used to navigate back to the active roles screen.
+     */
     @FXML
-    private void onBackButtonClick() throws IOException, SQLException {
+    private void onBackButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
+
+    /**
+     * Function that runs when the archive button is clicked.
+     * Used to archive the role.
+     */
     @FXML
     private void onArchiveButtonClick() throws IOException, SQLException {
         Data.archiveRole(Data.getCurrentRoleId());
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
+    /**
+     * Function that runs when the export to CSV button is clicked.
+     * Used to export a certain role's candidates with their details and statuses.
+     */
     @FXML
     private void onExportToCSVButtonClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -100,12 +111,22 @@ public class RoleDetailsController {
         }
     }
 
+    /**
+     * Function that converts the data to CSV.
+     * @param data -
+     * @return a string under CSV format
+     */
     public String convertToCSV(String[] data) {
         return Stream.of(data)
                 .map(this::escapeSpecialCharacters)
                 .collect(Collectors.joining(","));
     }
 
+    /**
+     * Function that handles the special characters.
+     * @param data -
+     * @return string without the special characters
+     */
     private String escapeSpecialCharacters(String data) {
         if (data == null) {
             throw new IllegalArgumentException("Input data cannot be null");
@@ -118,11 +139,18 @@ public class RoleDetailsController {
         return escapedData;
     }
 
+    /**
+     * Function that runs when the share button is clicked.
+     * Used to share the current role to another user.
+     */
     @FXML
     private void onShareButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.SHARE_WITH);
     }
 
+    /**
+     * Function that updates the screen state.
+     */
     public void redraw() {
         Role role = Data.getCurrentRole();
 

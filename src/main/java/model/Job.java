@@ -5,6 +5,9 @@ import model.ESeniority;
 import java.time.LocalDate;
 import java.util.Date;
 
+/**
+ * The class representing details about a candidate's job.
+ */
 public class Job {
     private int id;
     private String title;
@@ -13,6 +16,15 @@ public class Job {
     private ESeniority seniority;
     private String company;
 
+    /**
+     *
+     * @param id of the job
+     * @param title of the job
+     * @param startDate employment date
+     * @param endDate leave date
+     * @param seniority job's seniority
+     * @param company the company where the job took place within
+     */
     public Job(int id, String title, LocalDate startDate, LocalDate endDate, ESeniority seniority, String company) {
         this.id = id;
         this.title = title;

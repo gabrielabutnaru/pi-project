@@ -15,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Candidate;
 import model.Data;
@@ -27,6 +26,9 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The controller for the new role screen.
+ */
 public class NewRoleController implements Initializable {
     @FXML
     private ImageView userAvatar;
@@ -66,21 +68,37 @@ public class NewRoleController implements Initializable {
 
     private final ObservableList<String> skills = FXCollections.observableArrayList();
 
+    /**
+     * Function that runs when the active roles button is clicked.
+     * Used to navigate to the active roles screen.
+     */
     @FXML
     public void onActiveRolesButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ACTIVE_ROLES);
     }
 
+    /**
+     * Function that runs when the archived roles button is clicked.
+     * Used to navigate to the archived roles screen.
+     */
     @FXML
     public void onArchivedRolesButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.ARCHIVED_ROLES);
     }
 
+    /**
+     * Function that runs when the logout button is clicked.
+     * Used to log out the user.
+     */
     @FXML
     private void onLogOutButtonClick() throws IOException {
         Scenery.getInstance().changeScene(Screen.LOGIN);
     }
 
+    /**
+     * Function that runs when the + button is clicked.
+     * Used to add a new skill to the role.
+     */
     @FXML
     private void onAddSkillButtonClick() {
         if (!Objects.equals(skillsField.getText(), "")) {
@@ -89,6 +107,10 @@ public class NewRoleController implements Initializable {
         }
     }
 
+    /**
+     * Function that runs when the create role button is clicked.
+     * Used to create a new role.
+     */
     @FXML
     private void onCreateNewRoleButton() throws SQLException, IOException {
         Boolean hasError = false;
@@ -98,19 +120,19 @@ public class NewRoleController implements Initializable {
         } else {
             skillsErrorMessageLabel.setVisible(false);
         }
-        if (cityField.getText().equals("")) {
+        if (cityField.getText().isEmpty()) {
             cityErrorMessageLabel.setVisible(true);
             hasError = true;
         } else {
             cityErrorMessageLabel.setVisible(false);
         }
-        if (titleField.getText().equals("")) {
+        if (titleField.getText().isEmpty()) {
             titleErrorMessageLabel.setVisible(true);
             hasError = true;
         } else {
             titleErrorMessageLabel.setVisible(false);
         }
-        if (salaryBudgetField.getText().equals("")) {
+        if (salaryBudgetField.getText().isEmpty()) {
             salaryBudgetErrorMessageLabel.setVisible(true);
             hasError = true;
         } else {
@@ -135,6 +157,9 @@ public class NewRoleController implements Initializable {
     }
 
 
+    /**
+     * Function that updates the screen state.
+     */
     public void redraw() {
         Circle clip = new Circle(32, 32, 32);
         userAvatar.setImage(new Image(Data.getCurrentUser().getAvatar(), true));
@@ -150,6 +175,9 @@ public class NewRoleController implements Initializable {
         this.skillsErrorMessageLabel.setVisible(false);
     }
 
+    /**
+     * Function that draws the skills chips based on the chip component.
+     */
     public void drawChips() {
             skillsContainer.getChildren().clear();
             for (int i = 0; i < skills.size(); i++) {
@@ -172,9 +200,18 @@ public class NewRoleController implements Initializable {
             }
         }
 
+    /**
+     * Function that is called when the component is initialized.
+     * @param url -
+     * @param resourceBundle -
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         skills.addListener(new ListChangeListener<String>() {
+            /**
+             * Function that runs when a change is made to the skills list.
+             * @param change -
+             */
             @Override
             public void onChanged(Change<? extends String> change) {
                 drawChips();
