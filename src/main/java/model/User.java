@@ -22,6 +22,8 @@ public class User {
         this.avatar = avatar;
     }
 
+    public User() {}
+
     public int getId() {
         return id;
     }

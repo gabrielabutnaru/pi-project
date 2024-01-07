@@ -23,6 +23,10 @@ public class ActiveRolesController {
     @FXML
     private ImageView userAvatar;
 
+    public VBox getActiveCardLayout() {
+        return activeCardLayout;
+    }
+
     @FXML
     private VBox activeCardLayout;
 
@@ -68,6 +72,13 @@ public class ActiveRolesController {
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         try {
             List<Role> activeRoles = Data.roles.stream().filter(Role::isActive).toList();
+            if (activeRoles.isEmpty()) {
+                if (Data.roles.isEmpty()) {
+                    activeCardLayout.getChildren().add(new Label("There are no roles at all!"));
+                } else {
+                    activeCardLayout.getChildren().add(new Label("There are only archived roles!"));
+                }
+            }
             for (int i = 0; i < activeRoles.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("active-card.fxml"));

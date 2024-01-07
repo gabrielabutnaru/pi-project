@@ -29,9 +29,19 @@ public class Scenery {
     private final LoginController loginController;
 
     private final Scene activeRoles;
+
+    public ActiveRolesController getActiveRolesController() {
+        return activeRolesController;
+    }
+
     private final ActiveRolesController activeRolesController;
 
     private final Scene archivedRoles;
+
+    public ArchivedRolesController getArchivedRolesController() {
+        return archivedRolesController;
+    }
+
     private final ArchivedRolesController archivedRolesController;
 
     private final Scene newRole;
@@ -41,6 +51,11 @@ public class Scenery {
     private final RoleDetailsController roleDetailsController;
 
     private final Scene candidateDetails;
+
+    public CandidateDetailsController getCandidateDetailsController() {
+        return candidateDetailsController;
+    }
+
     private final CandidateDetailsController candidateDetailsController;
 
     private final Scene shareWith;

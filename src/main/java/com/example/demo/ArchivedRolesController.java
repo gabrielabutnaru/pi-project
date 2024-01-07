@@ -20,6 +20,10 @@ import java.util.List;
  * The controller for the archived roles screen.
  */
 public class ArchivedRolesController {
+    public VBox getArchivedCardLayout() {
+        return archivedCardLayout;
+    }
+
     @FXML
     private VBox archivedCardLayout;
 
@@ -65,6 +69,13 @@ public class ArchivedRolesController {
         this.userFullName.setText(Data.getCurrentUser().getFirstName() + " " + Data.getCurrentUser().getLastName());
         try {
             List<Role> archivedRoles = Data.roles.stream().filter(r -> !r.isActive()).toList();
+            if (archivedRoles.isEmpty()) {
+                if (Data.roles.isEmpty()) {
+                    archivedCardLayout.getChildren().add(new Label("There are no roles at all!"));
+                } else {
+                    archivedCardLayout.getChildren().add(new Label("There are only active roles!"));
+                }
+            }
             for (int i = 0; i < archivedRoles.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("archived-card.fxml"));

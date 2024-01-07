@@ -45,6 +45,10 @@ public class CandidateDetailsController {
     @FXML
     private HBox candidateSkills;
 
+    public Label getCandidateStatus() {
+        return candidateStatus;
+    }
+
     @FXML
     private Label candidateStatus;
 
@@ -105,7 +109,7 @@ public class CandidateDetailsController {
      * Function that updates the screen state.
      */
     public void redraw() {
-        Candidate c = Data.getCurrentCandidate() ;
+        Candidate c = Data.getCurrentCandidate();
         candidateAge.setText(Integer.toString(c.getAge()));
         candidateAvatar.setImage(new Image(c.getAvatar(), true));
         candidateCity.setText(c.getCity());

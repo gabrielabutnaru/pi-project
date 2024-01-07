@@ -2,7 +2,6 @@ package model;
 
 import java.sql.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -42,6 +41,10 @@ public class Data {
         put(EStatus.OMITTED, "OMITTED");
         put(EStatus.FAILED, "FAILED");
     }};
+
+    public static void setCurrentUser(User currentUser) {
+        Data.currentUser = currentUser;
+    }
 
     private static User currentUser;
 
